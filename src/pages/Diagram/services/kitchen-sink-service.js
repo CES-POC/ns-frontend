@@ -14,6 +14,7 @@ file, You can obtain one at http://jointjs.com/license/rappid_v2.txt
 import * as joint from '@clientio/rappid';
 import * as dagre from 'dagre';
 import * as appShapes from '../shapes/app-shapes';
+import { getImageDimensions } from '../../../utilities/common';
 
 class KitchenSinkService {
 
@@ -443,9 +444,17 @@ class KitchenSinkService {
         });
     }
 
-    openAsSVG() {
+    async openAsSVG() {
+        const imageDimensions=await getImageDimensions(this.paper._background.image)
+        const imageVel = joint.V("image").attr({
+          "xlink:href": this.paper._background.image,
+          width: imageDimensions.width,
+          height: imageDimensions.height,
+        });
 
+        joint.V(this.paper.getLayerNode("back")).append(imageVel);
         this.paper.hideTools().toSVG((svg) => {
+            imageVel.remove();
             new joint.ui.Lightbox({
                 image: 'data:image/svg+xml,' + encodeURIComponent(svg),
                 downloadable: true,
@@ -460,9 +469,17 @@ class KitchenSinkService {
         });
     }
 
-    openAsPNG() {
+    async openAsPNG() {
+        const imageDimensions=await getImageDimensions(this.paper._background.image)
+        const imageVel = joint.V("image").attr({
+          "xlink:href": this.paper._background.image,
+          width: imageDimensions.width,
+          height: imageDimensions.height,
+        });
 
+        joint.V(this.paper.getLayerNode("back")).append(imageVel);
         this.paper.hideTools().toPNG((dataURL) => {
+            imageVel.remove();
             new joint.ui.Lightbox({
                 image: dataURL,
                 downloadable: true,
