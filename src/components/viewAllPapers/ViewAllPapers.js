@@ -1,12 +1,9 @@
-import React, { useEffect } from 'react';
-import { Col, Row } from 'react-bootstrap';
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
-import { Link } from 'react-router-dom';
-import { MdOutlineOpenInFull } from 'react-icons/md';
-import { useDispatch, useSelector } from 'react-redux';
-import '../../assets/scss/ViewAllPapers/ViewAllPapers.scss';
-import * as types from '../../redux/actionsTypes/actionTypes';
+import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
+import { MdOutlineOpenInFull } from "react-icons/md";
+import { useDispatch, useSelector } from "react-redux";
+import "../../assets/scss/ViewAllPapers/ViewAllPapers.scss";
+import * as types from "../../redux/actionsTypes/actionTypes";
 
 const ViewAllPapers = () => {
   const dispatch = useDispatch();
@@ -16,24 +13,28 @@ const ViewAllPapers = () => {
 
   const papersAll = useSelector((state) => state.paper.papers);
   return (
-    <Row className='allPaper-mainDiv'>
+    <div className="row allPaper-mainDiv">
       {papersAll &&
         papersAll.map((item) => (
-          <Col key={item.name} className='mt-3' sm={1} md={3} xl={3}>
-            <Card>
-              <Card.Img variant='top' height='250px' src={item.image} />
-              <Card.Body>
-                <Card.Title>{item.name}</Card.Title>
+          <div className="col mt-3" key={item.name} sm={1} md={3} xl={3}>
+            <div class="card">
+              <img
+                src={item.image}
+                class="card-img-top"
+                alt="..."
+                style="height='250px'"
+              />
+              <div class="card-body">
                 <Link to={`/paper/${item._id}`}>
-                  <Button>
+                  <button type="button" class="btn">
                     <MdOutlineOpenInFull />
-                  </Button>
+                  </button>
                 </Link>
-              </Card.Body>
-            </Card>
-          </Col>
+              </div>
+            </div>
+          </div>
         ))}
-    </Row>
+    </div>
   );
 };
 
