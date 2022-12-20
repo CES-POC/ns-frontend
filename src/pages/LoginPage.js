@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { setItem, getItem } from "../utilities/common/index";
 import "../assets/scss/LoginPage/LoginPage.scss";
+import axios from "../utilities/axios";
+import { getItem, setItem } from "../utilities/common/index";
 
 const LoginPage = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  // const [err, setErr] = useState(null);
+  const [email, setEmail] = useState(null);
+  const [password, setPassword] = useState(null);
+  const [err, setErr] = useState(null);
   const navigate = useNavigate();
   useEffect(() => {
     const user = getItem("loggedIn");
@@ -14,92 +15,72 @@ const LoginPage = () => {
       navigate("/");
     }
   }, []);
-  const handleLoginForm = (e) => {
+  const handleLoginForm = async (e) => {
     e.preventDefault();
-    if (!email || !password) {
-      setErr("Enter Email & Password");
-    }
-    if (email === "neosilica@gmail.com" && password === "123456") {
-      setItem("loggedIn", true);
+    try {
+      if (!email || !password) {
+        setErr("enter User Name & Password");
+
+        return;
+      }
+      const { data } = await axios.post("/auth/login", {
+        email,
+        password,
+      });
+      const { User, accessToken } = data;
+      setItem("User", User);
+      setItem("accessToken", accessToken);
       navigate("/");
-    } else {
-      setErr("*Invalid Email or Password");
+    } catch (error) {
+      setErr("Invalid Username & Password");
     }
   };
-
-  const onEmailChange = (e) => {
-    setEmail(e.target.value);
-  }
-  const onPasswordChange = (e) => {
-    setPassword(e.target.value);
-  }
-
   return (
-    <>
-      <div className="container-fluid login-page">
-        <div className="row">
-          {/* img section */}
-          <div className="col p-0">
-            <img src="/login-img.png" alt="logo" className="login_image" />
-          </div>
-          {/* img section */}
-
-          {/* form section */}
-          <div className="col p-0">
-            <div className="logo-container">
-              <div className="text-center">
-                <img
-                  className="img-fluid mt-5 mb-2"
-                  src="/logo512.png"
-                  alt=""
+    <div className="login-MainDiv">
+      <div className="container">
+        <div className="screen">
+          <div className="screen__content">
+            <form onSubmit={handleLoginForm} className="login">
+              <div className="login__field">
+                {err && <p style={{ color: "red" }}>{err}</p>}
+                <i className="login__icon fas fa-user" />
+                <input
+                  type="text"
+                  className="login__input"
+                  placeholder="User name / Email"
+                  value={email}
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                  }}
                 />
               </div>
-              <div className="form_container">
-                <div className="text-left mt-3 ">
-                  <h2 className="fw-bolder fs-3">Welcome</h2>
-                  <h6 className="fw-semibold">Please login to your account</h6>
-                </div>
-                <form className="mt-3">
-                  <div className="mb-3">
-                    <label className="form-label">Email address</label>
-                    <input
-                      type="email"
-                      className="form-control"
-                      placeholder="neosilica@gmail.com"
-                      value={email}
-                      onChange={onEmailChange}
-                    />
-                  </div>
-                  {/* {err && <p style={{ color: "red" }}>{err}</p>} */}
-                  <div className="mb-2">
-                    <label className="form-label">Password</label>
-                    <input
-                      type="password"
-                      className="form-control"
-                      placeholder="***********"
-                      value={password}
-                      onChange={onPasswordChange}
-                    />
-                  </div>
-                  <button
-                    className="btn btn-primary btn-block mt-3"
-                    onClick={handleLoginForm}
-                  >
-                    Login
-                  </button>
-                  <div className="text-center mt-4">
-                    <a href="" className="text-dark">
-                      Terms and Conditions & Privacy Policy
-                    </a>
-                  </div>
-                </form>
+              <div className="login__field">
+                <i className="login__icon fas fa-lock" />
+                <input
+                  type="password"
+                  className="login__input"
+                  placeholder="Password"
+                  value={password}
+                  onChange={(e) => {
+                    setPassword(e.target.value);
+                  }}
+                />
               </div>
-            </div>
+              <button type="submit" className="button login__submit">
+                <span className="button__text">Log In Now</span>
+                <i className="button__icon fas fa-chevron-right" />
+              </button>
+            </form>
           </div>
-          {/* form section */}
+          <div className="screen__background">
+            <span className="screen__background__shape screen__background__shape4" />
+            <span className="screen__background__shape screen__background__shape3" />
+            <span className="screen__background__shape screen__background__shape2" />
+            <span className="screen__background__shape screen__background__shape1" />
+          </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 export default LoginPage;
