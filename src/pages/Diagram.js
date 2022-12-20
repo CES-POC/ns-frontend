@@ -46,7 +46,7 @@ class Diagram extends Component {
     );
     this.rappid = service;
     service.startRappid();
-    service.graph.fromJSON(JSON.parse(sampleGraphs.emergencyProcedure));
+    // service.graph.fromJSON(JSON.parse(sampleGraphs.emergencyProcedure));
 
     const themePicker = new ThemePicker({
       el: this.themePickerRef.current,
@@ -66,7 +66,7 @@ class Diagram extends Component {
       <div ref={this.appRef} className='Diagram'>
         <div className='app-header'>
           <div className='app-title'>
-            <h1>{this.props.title}</h1>
+            <img src='/logo512.png' className='p-2 img-fluid' alt='' />
           </div>
           <div className='toolbar-container' />
         </div>

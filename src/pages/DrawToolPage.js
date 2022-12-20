@@ -4,6 +4,7 @@ import { dia, shapes } from '@clientio/rappid';
 import $ from 'jquery';
 import jsPDF from 'jspdf';
 import { FcRedo, FcUndo } from 'react-icons/fc';
+import { Button } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 import html2canvas from 'html2canvas';
 import { AiFillDelete, AiOutlineZoomOut, AiOutlineZoomIn } from 'react-icons/ai';
@@ -402,38 +403,38 @@ const DrawToolPage = () => {
         <div>
           <div style={{ border: '1px solid black' }} id='menu' />
           <div className='formats-btn'>
-            <button
+            <Button
               className='btn-danger d-btn mt-5'
               onClick={() => {
                 downloadImage('jpeg');
               }}
             >
               JPEG
-            </button>
-            <button
+            </Button>
+            <Button
               className='btn-danger d-btn mt-5'
               onClick={() => {
                 downloadImage('png');
               }}
             >
               PNG
-            </button>
-            <button
+            </Button>
+            <Button
               className='btn-danger d-btn mt-5'
               onClick={() => {
                 downloadImage('svg');
               }}
             >
               SVG
-            </button>
-            <button
+            </Button>
+            <Button
               className='btn-danger d-btn mt-5'
               onClick={() => {
                 downloadImage('pdf');
               }}
             >
               PDF
-            </button>
+            </Button>
           </div>
         </div>
       </Modal>

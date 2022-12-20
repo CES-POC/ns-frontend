@@ -1,16 +1,19 @@
 import React, { useEffect } from "react";
+import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import "../../assets/scss/Header/Header.scss";
-import { removeItem } from "../../utilities/common/index";
+import { getItem, removeItem } from "../../utilities/common/index";
 
 const Header = () => {
   const navigate = useNavigate();
   const HandlerLogout = () => {
-    removeItem("loggedIn");
+    removeItem("User");
+    removeItem("accessToken");
     navigate("/login");
   };
+
   useEffect(() => {
-    const user = localStorage.getItem("loggedIn");
+    const user = getItem("User");
     if (!user) {
       navigate("/login");
     }
@@ -20,13 +23,9 @@ const Header = () => {
       {/* <h1 className="header-title">NEW SILICA DRAW TOOL</h1> */}
 
       <img src="/logo512.png" className="p-2" alt="" />
-      <button
-        type="button"
-        class="btn btn-primary logout-btn"
-        onClick={HandlerLogout}
-      >
+      <Button className="logout-btn" variant="primary" onClick={HandlerLogout}>
         Logout
-      </button>
+      </Button>
     </div>
   );
 };
