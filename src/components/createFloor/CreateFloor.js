@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Button } from "react-bootstrap";
 import { BsPlusCircleDotted } from "react-icons/bs";
 import Modal from "react-modal";
 import axios from "../../utilities/axios";
@@ -95,13 +94,13 @@ const CreateFloor = () => {
           {loading ? (
             <p>loading</p>
           ) : (
-            <Button
+            <button
               type="submit"
-              variant="contained"
+              className="btn"
               style={{ marginLeft: "200px", marginTop: "10px" }}
             >
               Create
-            </Button>
+            </button>
           )}
         </form>
       </Modal>
