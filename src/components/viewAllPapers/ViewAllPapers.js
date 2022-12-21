@@ -16,7 +16,7 @@ const ViewAllPapers = () => {
     <div className="row allPaper-mainDiv">
       {papersAll &&
         papersAll.map((item) => (
-          <div className="col mt-3" key={item.name} sm={1} md={3} xl={3}>
+          <div className="col mt-3 col-sm-1 col-md-3 col-xl-3" key={item.name} >
             <div className="card">
               <img
                 src={item.image}
