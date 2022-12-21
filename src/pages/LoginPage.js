@@ -4,6 +4,7 @@ import "../assets/scss/LoginPage/LoginPage.scss";
 import axios from "../utilities/axios";
 import { getItem, setItem } from "../utilities/common/index";
 import Alerts from "../components/alert/Alerts";
+
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -11,6 +12,7 @@ const LoginPage = () => {
   const [alertMessage, setAlertMessage] = useState("");
   const [showAlert, setShowAlert] = useState(false);
   const closeAlert = () => setShowAlert(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const user = getItem("User");
