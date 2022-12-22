@@ -1,8 +1,7 @@
-import axios from "../../utilities/axios";
 import React, { useState } from "react";
-import { FcPlus } from "react-icons/fc";
 import { BsPlusCircleDotted } from "react-icons/bs";
 import Modal from "react-modal";
+import axios from "../../utilities/axios";
 
 const CreateFloor = () => {
   const customStyles = {
@@ -97,7 +96,7 @@ const CreateFloor = () => {
           ) : (
             <button
               type="submit"
-              class="btn"
+              className="btn"
               style={{ marginLeft: "200px", marginTop: "10px" }}
             >
               Create

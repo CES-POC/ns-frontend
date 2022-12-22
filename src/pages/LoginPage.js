@@ -1,41 +1,61 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { setItem, getItem } from "../utilities/common/index";
 import "../assets/scss/LoginPage/LoginPage.scss";
+import axios from "../utilities/axios";
+import { getItem, setItem } from "../utilities/common/index";
+import Alerts from "../components/alert/Alerts";
 
 const LoginPage = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  // const [err, setErr] = useState(null);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [alertVarient, setAlertVarient] = useState("");
+  const [alertMessage, setAlertMessage] = useState("");
+  const [showAlert, setShowAlert] = useState(false);
+  const closeAlert = () => setShowAlert(false);
   const navigate = useNavigate();
+
   useEffect(() => {
-    const user = getItem("loggedIn");
+    const user = getItem("User");
     if (user) {
       navigate("/");
     }
   }, []);
-  const handleLoginForm = (e) => {
+  const handleLoginForm = async (e) => {
     e.preventDefault();
-    if (!email || !password) {
-      setErr("Enter Email & Password");
-    }
-    if (email === "neosilica@gmail.com" && password === "123456") {
-      setItem("loggedIn", true);
+    try {
+      if (email.length === 0 || password.length === 0) {
+        setAlertMessage("Enter Email & password");
+        setAlertVarient("alert alert-danger");
+        setShowAlert(true);
+        setTimeout(() => {
+          closeAlert();
+        }, 5000);
+        return;
+      }
+      const { data } = await axios.post("/auth/login", { email, password });
+      const { User, accessToken } = data;
+      setItem("User", User);
+      setItem("accessToken", accessToken);
       navigate("/");
-    } else {
-      setErr("*Invalid Email or Password");
+    } catch (error) {
+      setAlertMessage("Invalid email or password");
+      setShowAlert(true);
+      setAlertVarient("alert alert-danger");
+      setTimeout(() => {
+        closeAlert();
+      }, 5000);
     }
   };
 
   const onEmailChange = (e) => {
     setEmail(e.target.value);
-  }
+  };
   const onPasswordChange = (e) => {
     setPassword(e.target.value);
-  }
-
+  };
   return (
     <>
+      {showAlert && <Alerts variant={alertVarient} alertshow={alertMessage} />}
       <div className="container-fluid login-page">
         <div className="row">
           {/* img section */}
@@ -43,10 +63,9 @@ const LoginPage = () => {
             <img src="/login-img.png" alt="logo" className="login_image" />
           </div>
           {/* img section */}
-
           {/* form section */}
           <div className="col p-0">
-            <div className="logo-container">
+            <div className="logo-container d-flex flex-column justify-content-center">
               <div className="text-center">
                 <img
                   className="img-fluid mt-5 mb-2"
@@ -62,6 +81,7 @@ const LoginPage = () => {
                 <form className="mt-3">
                   <div className="mb-3">
                     <label className="form-label">Email address</label>
+
                     <input
                       type="email"
                       className="form-control"
@@ -70,7 +90,6 @@ const LoginPage = () => {
                       onChange={onEmailChange}
                     />
                   </div>
-                  {/* {err && <p style={{ color: "red" }}>{err}</p>} */}
                   <div className="mb-2">
                     <label className="form-label">Password</label>
                     <input
@@ -96,6 +115,7 @@ const LoginPage = () => {
               </div>
             </div>
           </div>
+
           {/* form section */}
         </div>
       </div>
