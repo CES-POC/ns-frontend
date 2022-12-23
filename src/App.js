@@ -7,10 +7,12 @@ import Layout from './layouts/Layout';
 import FormBuilderPage from './pages/FormBuilderPage';
 import FormGeneratorPage from './pages/FormGeneratorPage';
 import Diagram from './pages/Diagram';
+import ViewStages from './components/ViewStages/ViewStages';
 
 const App = () => (
   <BrowserRouter>
     <Routes>
+    <Route path='/test' element={<ViewStages />} />
       <Route path='/login' element={<LoginPage />} />
       <Route path='/paper/:id' element={<Diagram title='JointJS+' />} />
       <Route
