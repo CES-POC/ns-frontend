@@ -1,8 +1,8 @@
-/*! JointJS+ v3.6.1 - HTML5 Diagramming Framework - TRIAL VERSION
+/*! JointJS+ v3.6.3 - HTML5 Diagramming Framework - TRIAL VERSION
 
 Copyright (c) 2022 client IO
 
- 2022-11-17 
+ 2022-12-27 
 
 
 This Source Code Form is subject to the terms of the JointJS+ Trial License
