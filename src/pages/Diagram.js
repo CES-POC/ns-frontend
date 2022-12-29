@@ -53,9 +53,15 @@ class Diagram extends Component {
   render() {
     return (
       <div ref={this.appRef} className='Diagram'>
-        <div className='app-header'>
-          <div className='app-title'>
-            <img src='/logo512.png' className='p-2 img-fluid' alt='' />
+        <div className='app-header row'>
+          <div className='col'>
+            <div className='app-title '>
+              <img src='/logo512.png' className='p-2 img-fluid' alt='' />
+            </div>
+          </div>
+          <div className='col'></div>
+          <div className='col px-3 hr-sec'>
+            <button className='btn btn-info '>Upload</button>
           </div>
         </div>
         <div className='app-body'>
@@ -96,7 +102,6 @@ class Diagram extends Component {
 
           <div className='navigator-container' />
         </div>
-        <div ref={this.themePickerRef} className='theme-picker'></div>
 
         <div className='tab-content' id='myTabContent'>
           <div

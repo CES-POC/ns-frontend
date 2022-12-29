@@ -84,6 +84,7 @@ body {
 }
 
 .app-header {
+  height: 64px;
   position: relative;
   width: 100%;
 }

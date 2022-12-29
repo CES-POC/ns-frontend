@@ -118,26 +118,63 @@
 .tools-btn:disabled {
   box-shadow: rgba(60, 64, 67, 0.3) 0 1px 3px 0, rgba(60, 64, 67, 0.15) 0 4px 8px 3px;
 }
+
 .nav-tabs {
   border: 0 !important;
 }
+
+.joint-stencil.joint-theme-modern {
+  color: #c6c7e2;
+  background: #313030 !important;
+}
+
+.joint-stencil .group-label {
+  background: #36363678 !important;
+  color: #fff !important;
+  text-transform: capitalize !important;
+  margin-left: 1em;
+}
+
+.joint-paper-scroller.joint-theme-modern {
+  background-color: #313030 !important;
+}
+
+.Diagram.joint-theme-modern .app-title {
+  background: #ffffff !important;
+  text-align: center;
+}
+
+.nav-tabs {
+  .nav-link {
+    color: #ffffff !important;
+  }
+}
+
 .custom-tabs {
   display: flex;
   flex-wrap: wrap;
   padding-left: 0;
   margin-bottom: 0;
   list-style: none;
-  justify-content: flex-end;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin-left: 1em;
   position: relative;
   z-index: 999;
+
   .nav-item {
     color: #495057;
-    width: 50%;
-    // background-color: #fff;
     border-color: #dee2e6 #dee2e6 #fff;
+
     .active {
-      border-bottom: 2px solid rebeccapurple;
+      border: 0px !important;
+      color: #fff !important;
+      border-bottom: 2px solid #0d99ff !important;
     }
+  }
+
+  .nav-link.active {
+    background-color: transparent !important;
   }
 }
 
@@ -180,21 +217,78 @@ div.joint-toolbar {
 
 .joint-widget.joint-theme-modern[data-type='undo']:after {
   background-position: 0 !important;
-  width: 35px !important;
-  height: 35px !important;
+  width: 15px !important;
+  height: 15px !important;
   margin: 10px;
-  // background-size: cover;
+
   background-image: url('../../img/undo.svg') !important;
+  :hover {
+    background-color: #0d172a;
+  }
+}
+.joint-widget.joint-theme-modern[data-type='redo']:after {
+  background-position: 0 !important;
+  width: 15px !important;
+  height: 15px !important;
+  margin: 10px;
+  background-image: url('../../img/redo.svg') !important;
 }
 
 .joint-widget.joint-theme-modern[data-name='layout']:after {
   background-position: 0 !important;
-  width: 35px !important;
-  height: 35px !important;
+  width: 25px !important;
+  height: 25px !important;
   margin: 10px;
   background-image: url('../../img/zoom_fit.svg') !important;
+}
+.joint-widget.joint-theme-modern[data-name='clear']:after {
+  background-position: 0 !important;
+  width: 10px !important;
+  height: 15px !important;
+  margin: 10px;
+  background-image: url('../../img/delete.svg') !important;
 }
 
 .joint-toolbar-group button {
   border: 1px solid #6b6c8a !important;
+  :hover {
+    background-color: #2e9b71 !important;
+  }
+}
+
+.joint-stencil.joint-theme-modern .search {
+  background-color: transparent !important;
+  border: 0px !important;
+  border-bottom: 1px solid #cecece !important;
+  border-radius: 0% !important;
+}
+.joint-toolbar button.joint-widget:hover {
+  background-color: #6a6c8a !important;
+}
+.hr-sec {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  button {
+    background: #0d99ff;
+    color: #fff;
+    padding: 0.5em 1.5em;
+    border-radius: 4px;
+    width: 8em;
+  }
+}
+
+.joint-inspector.joint-theme-modern {
+  color: #ffffff !important;
+  background: #313030 !important;
+
+  .select-box-selection,
+  .content-editable {
+    border-color: #fff !important;
+  }
+}
+
+.joint-inspector.joint-theme-modern .group > .group-label {
+  color: #fff !important;
+  background: transparent !important;
 }
