@@ -118,7 +118,9 @@
 .tools-btn:disabled {
   box-shadow: rgba(60, 64, 67, 0.3) 0 1px 3px 0, rgba(60, 64, 67, 0.15) 0 4px 8px 3px;
 }
-
+.nav-tabs {
+  border: 0 !important;
+}
 .custom-tabs {
   display: flex;
   flex-wrap: wrap;
@@ -126,13 +128,15 @@
   margin-bottom: 0;
   list-style: none;
   justify-content: flex-end;
+  position: relative;
+  z-index: 999;
   .nav-item {
     color: #495057;
     width: 50%;
     // background-color: #fff;
     border-color: #dee2e6 #dee2e6 #fff;
     .active {
-      border: 2px solid rebeccapurple;
+      border-bottom: 2px solid rebeccapurple;
     }
   }
 }
@@ -145,4 +149,52 @@
   width: 240px;
   box-sizing: border-box;
   padding: 10px;
+}
+
+.toolbar-container {
+  display: flex;
+  position: absolute;
+  width: 250px;
+  top: 240px;
+  right: 0 !important;
+  box-sizing: border-box;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.joint-toolbar.joint-theme-modern {
+  background: transparent !important;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+div.joint-toolbar {
+  display: flex;
+  align-items: center;
+  flex-shrink: 1000;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.joint-widget.joint-theme-modern[data-type='undo']:after {
+  background-position: 0 !important;
+  width: 35px !important;
+  height: 35px !important;
+  margin: 10px;
+  // background-size: cover;
+  background-image: url('../../img/undo.svg') !important;
+}
+
+.joint-widget.joint-theme-modern[data-name='layout']:after {
+  background-position: 0 !important;
+  width: 35px !important;
+  height: 35px !important;
+  margin: 10px;
+  background-image: url('../../img/zoom_fit.svg') !important;
+}
+
+.joint-toolbar-group button {
+  border: 1px solid #6b6c8a !important;
 }

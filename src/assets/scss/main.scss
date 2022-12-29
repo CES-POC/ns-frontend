@@ -37,8 +37,11 @@ body {
   border: 2px none #ffffff;
 }
 
-.sidebar{
-  position: fixed;
-  top: 130px;
-  
+.sidebar {
+  position: absolute;
+  right: 0;
+  top: 0;
+  min-width: 250px;
+  background: #313030;
+  height: 100vh;
 }

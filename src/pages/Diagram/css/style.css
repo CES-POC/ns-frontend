@@ -184,14 +184,6 @@ body {
 }
 
 /*  Toolbar  */
-.toolbar-container {
-  display: inline-block;
-  position: absolute;
-  height: 100%;
-  left: 240px;
-  right: 0;
-  box-sizing: border-box;
-}
 
 .toolbar-container .joint-toolbar {
   width: 100%;
