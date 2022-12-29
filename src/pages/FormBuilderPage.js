@@ -150,7 +150,6 @@ const FormBuilderPage = () => {
     setFormValues(data);
   };
 
-  console.log(formValues);
   return (
     <div className="App">
       <header className="App-header">
