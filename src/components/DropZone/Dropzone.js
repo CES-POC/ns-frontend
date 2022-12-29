@@ -7,14 +7,18 @@ function MyDropzone({ multiple }) {
   const [selectedFiles, setSelectedFiles] = useState([]);
 
   const onDrop = useCallback((acceptedFiles) => {
-    setSelectedFiles((file) => [...file, ...acceptedFiles]);
-
+    if (multiple) {
+      setSelectedFiles((file) => [...file, ...acceptedFiles]);
+    } else {
+      setSelectedFiles(acceptedFiles);
+    }
   }, []);
+
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
     multiple,
   });
-  console.log(selectedFiles, "jhjh");
+
   return (
     <>
       <div {...getRootProps()} className="mt-3 dropzone">
@@ -26,6 +30,14 @@ function MyDropzone({ multiple }) {
         ) : (
           <p>Drop the files here ...</p>
         )}
+        <div>
+          <input {...getInputProps()} />
+          {!isDragActive && (
+            <button className="btn btn-light btn-outline-secondary mx-auto d-block ">
+              Choose File
+            </button>
+          )}
+        </div>
       </div>
       {selectedFiles &&
         Array.isArray(selectedFiles) &&
@@ -45,14 +57,6 @@ function MyDropzone({ multiple }) {
             </div>
           </div>
         )}
-      <div>
-        <input {...getInputProps()} />
-        {!isDragActive && (
-          <button className="btn btn-light btn-outline-secondary mx-auto d-block ">
-            Choose File
-          </button>
-        )}
-      </div>
     </>
   );
 }

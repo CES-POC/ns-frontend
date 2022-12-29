@@ -8,6 +8,8 @@ import reportWebVitals from './reportWebVitals';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 import './assets/scss/main.scss';
 import '@clientio/rappid/rappid.css';
+import "bootstrap-icons/font/bootstrap-icons.css";
+
 root.render(
   <>
     <Provider store={store}>

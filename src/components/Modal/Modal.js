@@ -34,7 +34,6 @@ function Modal({ handleSystemImage }) {
               />
             </form>
             <span>
-              {" "}
               <Dropzone multiple={false} />
             </span>
           </div>

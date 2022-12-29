@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { TbGridDots } from "react-icons/tb";
+import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 import { AiFillDelete, AiOutlineBars } from "react-icons/ai";
 import { GrAdd } from "react-icons/gr";
-import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
+import { TbGridDots } from "react-icons/tb";
 import AsyncSelect from "react-select/async";
+import CreateEngObject from "../components/formBuilder/CreateEngObject";
 import { Constants } from "../utilities/constants";
-import "../assets/scss/FormBuilder/FormBuilder.scss";
 
 const FormBuilderPage = () => {
   const initialFormValues = [
@@ -150,10 +150,13 @@ const FormBuilderPage = () => {
     setFormValues(data);
   };
 
+  console.log(formValues);
   return (
-    <div className="App">
-      <header className="App-header">
-        <form className="form-builder" onSubmit={handleSubmit}>
+    <div className="container">
+      <CreateEngObject />
+      <div className="row border rounded mx-2 mt-2 mb-5 p-2">
+        <p className="mt-4 ms-4 fs-4 fw-bold">Data Form</p>
+        <form className="w-100" onSubmit={handleSubmit}>
           <DragDropContext onDragEnd={handleOnDragEnd}>
             <Droppable droppableId="characters">
               {(provided) => (
@@ -165,9 +168,9 @@ const FormBuilderPage = () => {
                   {formValues.map(
                     ({ id, heading, subheading, fields }, index) => {
                       return (
-                        <div key={id} className="form-mainDiv">
-                          <div className="form-inner">
-                            <div className="div1">
+                        <div key={id} className="w-100">
+                          <div className="mt-5 w-100 justify-content-center">
+                            <div className="container d-flex w-100 ">
                               <Draggable draggableId={id} index={index}>
                                 {(provided1) => (
                                   <div
@@ -175,50 +178,68 @@ const FormBuilderPage = () => {
                                     ref={provided1.innerRef}
                                     {...provided1.draggableProps}
                                     {...provided1.dragHandleProps}
-                                    className="div2"
+                                    className="w-40"
                                   >
                                     <TbGridDots size={"30"} />
                                   </div>
                                 )}
                               </Draggable>
-                              <div className="div3">
-                                <label className="head-labels">Heading</label>
+                              <div className="form-group d-flex">
+                                <label
+                                  className="fs-4 fw-bold px-3"
+                                  htmlFor="inputsm"
+                                >
+                                  Heading
+                                </label>
                                 <input
+                                  className="form-control input-sm"
                                   name="heading"
+                                  id="inputsm"
                                   type="text"
+                                  placeholder="Operational Fields"
                                   value={heading || ""}
                                   onChange={(e) => handleChange(index, e)}
                                 />
                               </div>
-                              <div className="div3">
-                                <label className="head-labels">
-                                  Sub Heading
+                              <div className="form-group d-flex">
+                                <label
+                                  className="fs-4 fw-bold px-4"
+                                  htmlFor="inputsm"
+                                >
+                                  Heading
                                 </label>
                                 <input
+                                  className="form-control input-sm"
                                   name="subheading"
+                                  id="inputsm"
                                   type="text"
+                                  placeholder="Operational Fields"
                                   value={subheading || ""}
                                   onChange={(e) => handleChange(index, e)}
                                 />
                               </div>
-                              <div className="div5">
+                              <div className="ps-4">
                                 <button
                                   type="button"
-                                  className="btn btn-danger"
+                                  className="btn btn-outline-danger"
                                   onClick={() => removeFormHeading(index)}
                                 >
-                                  <AiFillDelete />
+                                  <p className="danger p-0 m-0">
+                                    <AiFillDelete /> Delete
+                                  </p>
                                 </button>
                               </div>
                             </div>
-                            <div className="field-Main">
-                              <div className="field">
-                                <div className="field-names">
-                                  <h4 className="names">Field Name</h4>
-                                  <h4 className="names">Field Type</h4>
-                                  <h4 className="names">Unit</h4>
-                                  <h4 className="names">Default Value</h4>
-                                  <h4 className="names">Value</h4>
+                            <div className="col">
+                              <div className="row">
+                                <div className="d-flex justify-content-evenly mt-4">
+                                  <h4 className="fs-5 fw-bold">Field Name</h4>
+                                  <h4 className="fs-5 fw-bold">Field Type</h4>
+                                  <h4 className="fs-5 fw-bold">Unit</h4>
+                                  <h4 className="fs-5 fw-bold">
+                                    Default Value
+                                  </h4>
+                                  <h4 className="fs-5 fw-bold">Value</h4>
                                 </div>
                                 <DragDropContext onDragEnd={handleOnDragEnd2}>
                                   <Droppable droppableId="fields">
@@ -232,7 +253,7 @@ const FormBuilderPage = () => {
                                           return (
                                             <div
                                               key={item.id}
-                                              className="field-names"
+                                              className="d-flex justify-content-evenly mt-3"
                                             >
                                               <Draggable
                                                 draggableId={item.id}
@@ -262,6 +283,7 @@ const FormBuilderPage = () => {
                                               <input
                                                 value={item.fieldname || ""}
                                                 name="fieldname"
+                                                placeholder="  Compressor 1"
                                                 onChange={(e) =>
                                                   handleChangeFields(
                                                     index,
@@ -295,6 +317,7 @@ const FormBuilderPage = () => {
                                               <input
                                                 value={item.unit || ""}
                                                 name="unit"
+                                                placeholder="  Compressor 1"
                                                 onChange={(e) =>
                                                   handleChangeFields(
                                                     index,
@@ -307,6 +330,7 @@ const FormBuilderPage = () => {
                                               <input
                                                 value={item.defaultvalue || ""}
                                                 name="defaultvalue"
+                                                placeholder="  Compressor 1"
                                                 onChange={(e) =>
                                                   handleChangeFields(
                                                     index,
@@ -319,6 +343,7 @@ const FormBuilderPage = () => {
                                               <input
                                                 value={item.value || ""}
                                                 name="value"
+                                                placeholder="  Compressor 1"
                                                 onChange={(e) =>
                                                   handleChangeFields(
                                                     index,
@@ -330,7 +355,7 @@ const FormBuilderPage = () => {
                                               ></input>
                                               <button
                                                 type="button"
-                                                className="btn btn-danger"
+                                                className="btn btn-outline-danger"
                                                 onClick={(e) =>
                                                   removeFormFields(
                                                     index,
@@ -351,11 +376,11 @@ const FormBuilderPage = () => {
                                   </Droppable>
                                 </DragDropContext>
 
-                                <div className="add-field">
+                                <div className="mt-4 ms-1">
                                   <button
                                     type="button"
                                     onClick={() => addFormFields(index)}
-                                    className="btn btn-info"
+                                    className="btn btn-outline-secondary"
                                   >
                                     <GrAdd />
                                     <span>Add Field</span>
@@ -363,10 +388,10 @@ const FormBuilderPage = () => {
                                 </div>
                               </div>
                             </div>
-                            <div className="add-btn">
+                            <div className="mt-4 ms-1">
                               <button
                                 type="button"
-                                className="btn btn-info"
+                                className="btn btn-outline-secondary"
                                 onClick={addFormHeading}
                               >
                                 <GrAdd />
@@ -383,11 +408,25 @@ const FormBuilderPage = () => {
               )}
             </Droppable>
           </DragDropContext>
-          <button type="submit" className="btn sub-btn btn-success">
-            Submit
-          </button>
+          <div class="d-flex flex-row-reverse bd-highlight mt-3 mb-3 me-5">
+            <div class="p-2 bd-highlight">
+              <button type="submit" className="btn btn-outline-secondary">
+                Cancel
+              </button>
+            </div>
+            <div class="p-2 bd-highlight">
+              <button type="submit" className="btn btn-primary">
+                save Engineering object
+              </button>
+            </div>
+          </div>
+          {/* <div className="text-end m-0 p-0">
+            <button type="submit" className="btn btn-success mt-2 me-5">
+              Submit
+            </button>
+          </div> */}
         </form>
-      </header>
+      </div>
     </div>
   );
 };

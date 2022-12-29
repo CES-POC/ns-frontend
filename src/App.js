@@ -6,22 +6,13 @@ import Layout from "./layouts/Layout";
 import FormBuilderPage from "./pages/FormBuilderPage";
 import FormGeneratorPage from "./pages/FormGeneratorPage";
 import Diagram from "./pages/Diagram";
-import CreateEngObjects from "./pages/CreateEngObjects";
 
 const App = () => (
   <BrowserRouter>
     <Routes>
       <Route path="/login" element={<LoginPage />} />
-      <Route path="/create-engobjects" element={<CreateEngObjects />} />
       <Route path="/paper/:id" element={<Diagram title="JointJS+" />} />
-      <Route
-        path="/formbuilder"
-        element={
-          <Layout>
-            <FormBuilderPage />
-          </Layout>
-        }
-      />
+      <Route path="/formbuilder" element={<FormBuilderPage />} />
       <Route
         path="/formgenerator"
         element={

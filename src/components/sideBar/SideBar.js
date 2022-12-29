@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { BsPlusCircleDotted } from "react-icons/bs";
-import Modal from "../Modal/Modal";
+import { Link } from "react-router-dom";
 import "../../assets/scss/sideBar/sideBar.scss";
+import Modal from "../Modal/Modal";
 
 const SideBar = () => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -24,7 +25,9 @@ const SideBar = () => {
         <h5 className="sideNav">
           Create shapes
           <span className="px-2">
-            <BsPlusCircleDotted />
+            <Link className="text-light" to={"/formbuilder"}>
+              <BsPlusCircleDotted />
+            </Link>
           </span>
         </h5>
       </div>
