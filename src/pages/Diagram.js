@@ -1,14 +1,15 @@
-/*! JointJS+ v3.6.1 - HTML5 Diagramming Framework - TRIAL VERSION
+/*! JointJS+ v3.6.3 - HTML5 Diagramming Framework - TRIAL VERSION
 
 Copyright (c) 2022 client IO
 
- 2022-11-17 
+ 2022-12-27 
 
 
 This Source Code Form is subject to the terms of the JointJS+ Trial License
 , v. 2.0. If a copy of the JointJS+ License was not distributed with this
 file, You can obtain one at http://jointjs.com/license/rappid_v2.txt
  or from the JointJS+ archive as was distributed by client IO. See the LICENSE file.*/
+
 
 import React, { Component } from 'react';
 import { setTheme } from '@clientio/rappid';
@@ -27,59 +28,61 @@ import './Diagram/css/style.css';
 import './Diagram/css/theme-picker.css';
 
 class Diagram extends Component {
-  constructor(props) {
-    super(props);
-    this.appRef = React.createRef();
-    this.themePickerRef = React.createRef();
-  }
 
-  componentDidMount() {
-    setTheme('modern');
+    constructor(props) {
+        super(props);
+        this.appRef = React.createRef();
+        this.themePickerRef = React.createRef();
+    }
 
-    const service = new RappidService(
-      this.appRef.current,
-      new StencilService(),
-      new ToolbarService(),
-      new InspectorService(),
-      new HaloService(),
-      new KeyboardService()
-    );
-    this.rappid = service;
-    service.startRappid();
-    // service.graph.fromJSON(JSON.parse(sampleGraphs.emergencyProcedure));
+    componentDidMount() {
 
-    const themePicker = new ThemePicker({
-      el: this.themePickerRef.current,
-      mainView: service,
-    });
-    themePicker.render();
-    this.themePicker = themePicker;
-  }
+        setTheme('modern');
 
-  componentWillUnmount() {
-    this.rappid.stopRappid();
-    this.themePicker.remove();
-  }
+        const service = new RappidService(
+            this.appRef.current,
+            new StencilService(),
+            new ToolbarService(),
+            new InspectorService(),
+            new HaloService(),
+            new KeyboardService()
+        );
+        this.rappid = service;
+        service.startRappid();
+        service.graph.fromJSON(JSON.parse(sampleGraphs.emergencyProcedure));
 
-  render() {
-    return (
-      <div ref={this.appRef} className='Diagram'>
-        <div className='app-header'>
-          <div className='app-title'>
-            <img src='/logo512.png' className='p-2 img-fluid' alt='' />
-          </div>
-          <div className='toolbar-container' />
-        </div>
-        <div className='app-body'>
-          <div className='stencil-container' />
-          <div className='paper-container' />
-          <div className='inspector-container' />
-          <div className='navigator-container' />
-        </div>
-        <div ref={this.themePickerRef} className='theme-picker'></div>
-      </div>
-    );
-  }
+        const themePicker = new ThemePicker({
+            el: this.themePickerRef.current,
+            mainView: service
+        });
+        themePicker.render();
+        this.themePicker = themePicker;
+    }
+
+    componentWillUnmount() {
+        this.rappid.stopRappid();
+        this.themePicker.remove();
+    }
+
+    render() {
+        return (
+            <div ref={this.appRef} className="Diagram">
+                <div className="app-header">
+                    <div className="app-title">
+                        <h1>{this.props.title}</h1>
+                    </div>
+                    <div className="toolbar-container" />
+                </div>
+                <div className="app-body">
+                    <div className="stencil-container" />
+                    <div className="paper-container" />
+                    <div className="inspector-container" />
+                    <div className="navigator-container" />
+                </div>
+                <div ref={this.themePickerRef} className="theme-picker"></div>
+            </div>
+        );
+    }
 }
 
 export default Diagram;

@@ -1,8 +1,8 @@
-/*! JointJS+ v3.6.1 - HTML5 Diagramming Framework - TRIAL VERSION
+/*! JointJS+ v3.6.3 - HTML5 Diagramming Framework - TRIAL VERSION
 
 Copyright (c) 2022 client IO
 
- 2022-11-17 
+ 2022-12-27 
 
 
 This Source Code Form is subject to the terms of the JointJS+ Trial License
@@ -16,54 +16,53 @@ file, You can obtain one at http://jointjs.com/license/rappid_v2.txt
 }
 
 .Diagram.joint-theme-modern .app-title {
-  background: #f6f6f6;
-  border-right: 2px solid #383b61;
+  background: #30d0c6;
 }
 
 .Diagram.joint-theme-modern .inspector-container {
   background: #383b61;
 }
 
-.joint-widget.joint-theme-modern[data-name='clear']:after,
-.joint-widget.joint-theme-modern[data-name='layout']:after,
-.joint-widget.joint-theme-modern[data-name='print']:after {
+.joint-widget.joint-theme-modern[data-name="clear"]:after,
+.joint-widget.joint-theme-modern[data-name="layout"]:after,
+.joint-widget.joint-theme-modern[data-name="print"]:after {
   display: block;
   width: 31px;
   height: 31px;
-  content: ' ';
+  content: " ";
   background-color: transparent;
   background-position: 0 0;
   background-repeat: no-repeat;
   background-image: url(./../assets/toolbar-icons-modern.png);
 }
 
-.joint-widget.joint-theme-modern[data-name='clear']:after {
+.joint-widget.joint-theme-modern[data-name="clear"]:after {
   background-position: 0 -62px;
 }
 
-.joint-widget.joint-theme-modern[data-name='clear']:hover:after {
+.joint-widget.joint-theme-modern[data-name="clear"]:hover:after {
   background-position: -31px -62px;
 }
 
-.joint-widget.joint-theme-modern[data-name='layout']:after {
+.joint-widget.joint-theme-modern[data-name="layout"]:after {
   background-position: 0 -124px;
 }
 
-.joint-widget.joint-theme-modern[data-name='layout']:hover:after {
+.joint-widget.joint-theme-modern[data-name="layout"]:hover:after {
   background-position: -31px -124px;
 }
 
-.joint-widget.joint-theme-modern[data-name='print']:after {
+.joint-widget.joint-theme-modern[data-name="print"]:after {
   background-position: 0 -248px;
 }
 
-.joint-widget.joint-theme-modern[data-name='print']:hover:after {
+.joint-widget.joint-theme-modern[data-name="print"]:hover:after {
   background-position: -31px -248px;
 }
 
-.joint-widget.joint-theme-modern[data-name='clear'],
-.joint-widget.joint-theme-modern[data-name='layout'],
-.joint-widget.joint-theme-modern[data-name='print'] {
+.joint-widget.joint-theme-modern[data-name="clear"],
+.joint-widget.joint-theme-modern[data-name="layout"],
+.joint-widget.joint-theme-modern[data-name="print"] {
   position: relative;
   top: -1px;
   border: none;
@@ -71,13 +70,13 @@ file, You can obtain one at http://jointjs.com/license/rappid_v2.txt
 }
 
 @media screen and (max-width: 1230px) and (min-width: 1170px) {
-  .joint-toolbar.joint-theme-modern div[data-name='zoom-slider'] input,
-  .joint-toolbar.joint-theme-modern label[data-name='zoom-slider-label'] {
+  .joint-toolbar.joint-theme-modern div[data-name="zoom-slider"] input,
+  .joint-toolbar.joint-theme-modern label[data-name="zoom-slider-label"] {
     display: none;
   }
 
-  .Diagram.joint-theme-modern .toolbar-container button[data-type='zoomIn'],
-  .Diagram.joint-theme-modern .toolbar-container button[data-type='zoomOut'] {
+  .Diagram.joint-theme-modern .toolbar-container button[data-type="zoomIn"],
+  .Diagram.joint-theme-modern .toolbar-container button[data-type="zoomOut"] {
     display: block;
   }
 }
@@ -104,25 +103,25 @@ file, You can obtain one at http://jointjs.com/license/rappid_v2.txt
 
 /*  IE  */
 @media screen and (max-width: 1490px) and (min-width: 0\0) {
-  .joint-toolbar.joint-theme-modern div[data-name='zoom-slider'] input,
-  .joint-toolbar.joint-theme-modern label[data-name='zoom-slider-label'] {
+  .joint-toolbar.joint-theme-modern div[data-name="zoom-slider"] input,
+  .joint-toolbar.joint-theme-modern label[data-name="zoom-slider-label"] {
     display: none;
   }
 
-  .Diagram.joint-theme-modern .toolbar-container button[data-type='zoomIn'],
-  .Diagram.joint-theme-modern .toolbar-container button[data-type='zoomOut'] {
+  .Diagram.joint-theme-modern .toolbar-container button[data-type="zoomIn"],
+  .Diagram.joint-theme-modern .toolbar-container button[data-type="zoomOut"] {
     display: block;
   }
 }
 
 @media screen and (max-width: 1380px) and (min-width: 0\0) {
-  .joint-toolbar.joint-theme-modern div[data-name='zoom-slider'] input,
-  .joint-toolbar.joint-theme-modern label[data-name='zoom-slider-label'] {
+  .joint-toolbar.joint-theme-modern div[data-name="zoom-slider"] input,
+  .joint-toolbar.joint-theme-modern label[data-name="zoom-slider-label"] {
     display: inline-block;
   }
 
-  .Diagram.joint-theme-modern .toolbar-container button[data-type='zoomIn'],
-  .Diagram.joint-theme-modern .toolbar-container button[data-type='zoomOut'] {
+  .Diagram.joint-theme-modern .toolbar-container button[data-type="zoomIn"],
+  .Diagram.joint-theme-modern .toolbar-container button[data-type="zoomOut"] {
     display: none;
   }
 
