@@ -20,33 +20,78 @@ const LoginPage = () => {
       navigate('/');
     }
   }, []);
+  // const handleLoginForm = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     if (email.length === 0 || password.length === 0) {
+  //       setAlertMessage('Please Enter Email & Password');
+  //       setAlertVarient('alert alert-danger');
+  //       setShowAlert(true);
+  //       setTimeout(() => {
+  //         closeAlert();
+  //       }, 5000);
+  //       return;
+  //     }
+  //     const { data } = await axios.post('/auth/login', { email, password });
+  //     const { User, accessToken } = data;
+  //     setItem('User', User);
+  //     setItem('accessToken', accessToken);
+  //     navigate('/');
+  //   } catch (error) {
+  //     setAlertMessage('Invalid email or password');
+  //     setShowAlert(true);
+  //     setAlertVarient('alert alert-danger');
+  //     setTimeout(() => {
+  //       closeAlert();
+  //     }, 5000);
+  //   }
+  // };
+
   const handleLoginForm = async (e) => {
     e.preventDefault();
+
     try {
       if (email.length === 0 || password.length === 0) {
         setAlertMessage('Please Enter Email & Password');
+
         setAlertVarient('alert alert-danger');
+
         setShowAlert(true);
+
         setTimeout(() => {
           closeAlert();
         }, 5000);
+
         return;
+      } else if (email === 'admin@cedar.com' && password === '12345678') {
+        setItem('User', true);
+
+        setItem('accessToken', true);
+
+        navigate('/');
+      } else {
+        setAlertMessage('Invalid email or password');
+
+        setShowAlert(true);
+
+        setAlertVarient('alert alert-danger');
+
+        setTimeout(() => {
+          closeAlert();
+        }, 5000);
       }
-      const { data } = await axios.post('/auth/login', { email, password });
-      const { User, accessToken } = data;
-      setItem('User', User);
-      setItem('accessToken', accessToken);
-      navigate('/');
     } catch (error) {
       setAlertMessage('Invalid email or password');
+
       setShowAlert(true);
+
       setAlertVarient('alert alert-danger');
+
       setTimeout(() => {
         closeAlert();
       }, 5000);
     }
   };
-
   const onEmailChange = (e) => {
     setEmail(e.target.value);
   };
@@ -58,12 +103,10 @@ const LoginPage = () => {
       {showAlert && <Alerts variant={alertVarient} alertshow={alertMessage} />}
       <div className='container-fluid login-page'>
         <div className='row'>
-          {/* img section */}
           <div className='col p-0'>
-            <img src='/login-img.png' alt='logo' className='login_image' />
+            <img src='/login-img.png' alt='logo' className='login_image pb-5' />
           </div>
-          {/* img section */}
-          {/* form section */}
+
           <div className='col p-0'>
             <div className='logo-container d-flex flex-column justify-content-center'>
               <div className='text-center'>
@@ -81,7 +124,7 @@ const LoginPage = () => {
                     <input
                       type='email'
                       className='form-control'
-                      placeholder='neosilica@gmail.com'
+                      placeholder='admin@cedar.com'
                       value={email}
                       onChange={onEmailChange}
                     />
@@ -99,17 +142,11 @@ const LoginPage = () => {
                   <button className='btn btn-primary btn-block mt-3' onClick={handleLoginForm}>
                     Login
                   </button>
-                  <div className='text-center mt-4'>
-                    <a href='' className='text-dark'>
-                      Terms and Conditions & Privacy Policy
-                    </a>
-                  </div>
+                  <div className='text-center mt-4'>Terms and Conditions & Privacy Policy</div>
                 </form>
               </div>
             </div>
           </div>
-
-          {/* form section */}
         </div>
       </div>
     </>

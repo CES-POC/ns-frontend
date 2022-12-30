@@ -75,7 +75,6 @@ body,
   padding: 0;
 }
 
- 
 .app-header {
   height: 64px;
   position: relative;
@@ -90,7 +89,7 @@ body,
 
 .app-title {
   display: inline-block;
-  width: 240px;
+  width: 200px;
   height: 100%;
   padding: 0;
 }

@@ -216,39 +216,39 @@ div.joint-toolbar {
   justify-content: space-around;
 }
 
-.joint-widget.joint-theme-modern[data-type='undo']:after {
-  background-position: 0 !important;
-  width: 15px !important;
-  height: 15px !important;
-  margin: 10px;
+// .joint-widget.joint-theme-modern[data-type='undo']:after {
+//   background-position: 0 !important;
+//   width: 15px !important;
+//   height: 15px !important;
+//   margin: 10px;
 
-  background-image: url('../../img/undo.svg') !important;
-  :hover {
-    background-color: #0d172a;
-  }
-}
-.joint-widget.joint-theme-modern[data-type='redo']:after {
-  background-position: 0 !important;
-  width: 15px !important;
-  height: 15px !important;
-  margin: 10px;
-  background-image: url('../../img/redo.svg') !important;
-}
+//   background-image: url('../../img/undo.svg') !important;
+//   :hover {
+//     background-color: #0d172a;
+//   }
+// }
+// .joint-widget.joint-theme-modern[data-type='redo']:after {
+//   background-position: 0 !important;
+//   width: 15px !important;
+//   height: 15px !important;
+//   margin: 10px;
+//   background-image: url('../../img/redo.svg') !important;
+// }
 
-.joint-widget.joint-theme-modern[data-name='layout']:after {
-  background-position: 0 !important;
-  width: 25px !important;
-  height: 25px !important;
-  margin: 10px;
-  background-image: url('../../img/zoom_fit.svg') !important;
-}
-.joint-widget.joint-theme-modern[data-name='clear']:after {
-  background-position: 0 !important;
-  width: 10px !important;
-  height: 15px !important;
-  margin: 10px;
-  background-image: url('../../img/delete.svg') !important;
-}
+// .joint-widget.joint-theme-modern[data-name='layout']:after {
+//   background-position: 0 !important;
+//   width: 25px !important;
+//   height: 25px !important;
+//   margin: 10px;
+//   background-image: url('../../img/zoom_fit.svg') !important;
+// }
+// .joint-widget.joint-theme-modern[data-name='clear']:after {
+//   background-position: 0 !important;
+//   width: 10px !important;
+//   height: 15px !important;
+//   margin: 10px;
+//   background-image: url('../../img/delete.svg') !important;
+// }
 
 .joint-toolbar-group button {
   border: 1px solid #6b6c8a !important;
