@@ -4,6 +4,8 @@
 * {
   font-family: 'Poppins', sans-serif !important;
   font-size: 1em;
+  scrollbar-width: auto;
+  scrollbar-color: #4a494b #ffffff;
 }
 
 body {
@@ -19,11 +21,36 @@ body {
   padding: 7px;
 }
 
-.eng-icons {
-  font-size: 2rem;
+.joint-paper-scroller::-webkit-scrollbar {
+  display: none;
+}
+/* ===== Scrollbar CSS ===== */
+/* Firefox */
+// * {
+//   scrollbar-width: auto;
+//   scrollbar-color: #4a494b #ffffff;
+// }
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 5px;
 }
 
-.eng-icons:hover,
-.eng-icons:focus {
-  border: 0.5px solid rgb(53, 58, 62);
+*::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #4a494b;
+  border-radius: 10px;
+  border: 2px none #ffffff;
+}
+
+.sidebar {
+  position: absolute;
+  right: 0;
+  top: 0;
+  min-width: 250px;
+  background: #313030;
+  height: 100vh;
 }
