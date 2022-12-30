@@ -1,13 +1,56 @@
 @import url('https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,500;1,400&display=swap');
+
+* {
+  font-family: 'Poppins', sans-serif !important;
+  font-size: 1em;
+  scrollbar-width: auto;
+  scrollbar-color: #4a494b #ffffff;
+}
 
 body {
-  overflow-y: scroll;
+  overflow-y: scroll !important;
 }
+
 .alert {
-    position: fixed;
-    top: 0;
-    right: 0;
-    z-index: 9999;
-    display: flex;
-    padding: 7px;
-  }
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 9999;
+  display: flex;
+  padding: 7px;
+}
+
+.joint-paper-scroller::-webkit-scrollbar {
+  display: none;
+}
+/* ===== Scrollbar CSS ===== */
+/* Firefox */
+// * {
+//   scrollbar-width: auto;
+//   scrollbar-color: #4a494b #ffffff;
+// }
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 5px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #4a494b;
+  border-radius: 10px;
+  border: 2px none #ffffff;
+}
+
+.sidebar {
+  position: absolute;
+  right: 0;
+  top: 0;
+  min-width: 250px;
+  background: #313030;
+  height: 100vh;
+}

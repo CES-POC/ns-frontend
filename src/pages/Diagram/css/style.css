@@ -75,15 +75,8 @@ body,
   padding: 0;
 }
 
-body {
-  -webkit-user-select: none;
-  -moz-user-select: -moz-none;
-  user-select: none;
-  font-family: sans-serif, Arial;
-  overflow: hidden;
-}
-
 .app-header {
+  height: 64px;
   position: relative;
   width: 100%;
 }
@@ -96,7 +89,7 @@ body {
 
 .app-title {
   display: inline-block;
-  width: 240px;
+  width: 200px;
   height: 100%;
   padding: 0;
 }
@@ -125,7 +118,8 @@ body {
 /*  Inspector  */
 .inspector-container {
   position: absolute;
-  top: 0;
+  top: 138px;
+  /* top: 0; */
   right: 0;
   bottom: 120px; /* navigator height */
   width: 240px;
@@ -183,14 +177,6 @@ body {
 }
 
 /*  Toolbar  */
-.toolbar-container {
-  display: inline-block;
-  position: absolute;
-  height: 100%;
-  left: 240px;
-  right: 0;
-  box-sizing: border-box;
-}
 
 .toolbar-container .joint-toolbar {
   width: 100%;
