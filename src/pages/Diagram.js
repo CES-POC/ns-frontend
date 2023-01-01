@@ -80,7 +80,7 @@ class Diagram extends Component {
                   aria-controls='home'
                   aria-selected='true'
                 >
-                  Home
+                  Presentation
                 </button>
               </li>
               <li className='nav-item' role='presentation'>
@@ -94,7 +94,7 @@ class Diagram extends Component {
                   aria-controls='profile'
                   aria-selected='false'
                 >
-                  Profile
+                  Tools
                 </button>
               </li>
             </ul>
