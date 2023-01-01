@@ -15,7 +15,7 @@ const SideBar = () => {
       <div>
         <h5 className='sideNav'>
           Create System
-          <span className='px-2' onClick={handleOpenModal}>
+          <span className='px-2'>
             <BsPlusCircleDotted data-bs-toggle='modal' data-bs-target='#staticBackdrop' />
           </span>
         </h5>
