@@ -1,15 +1,17 @@
+@import "../variables";
+
 .sideBar-mainDiv {
   min-height: 650px;
   min-width: 230px;
   width: 15%;
-  border: solid black 2px;
-  color: #c6c7e2;
-  background: #383b61;
+  border: solid $blackColor 2px;
+  color: lighten(saturate(adjust-hue($whiteGreyColor, 238), 32.56), 2.35);
+  background: $darkBlue;
   margin-right: 1em;
   // padding: 1em;
 }
 .sideNav {
-  border-bottom: 1px solid #dee2e640 !important;
+  border-bottom: 1px solid $boderWhite !important;
   padding: 0.65em;
 
   &:first-child {

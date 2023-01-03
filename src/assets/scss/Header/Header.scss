@@ -1,18 +1,18 @@
+@import "../variables";
+
 body {
   padding: 0;
   margin: 0;
   // overflow-y: scroll;
 }
+
 .header-mainDiv {
-  background-color: #fff;
+  background-color: $whiteColor;
   height: 70px;
-  width: auto;
-  border: 2px solid black;
-  display: flex;
-  justify-content: space-between;
+  border: 2px solid $blackColor;
 }
 .header-title {
-  color: chocolate;
+  color: $darkOrange;
   padding-left: 50px;
   padding-bottom: 20px;
 }

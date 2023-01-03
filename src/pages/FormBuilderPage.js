@@ -408,13 +408,13 @@ const FormBuilderPage = () => {
               )}
             </Droppable>
           </DragDropContext>
-          <div class="d-flex flex-row-reverse bd-highlight mt-3 mb-3 me-5">
-            <div class="p-2 bd-highlight">
+          <div className="d-flex flex-row-reverse bd-highlight mt-3 mb-3 me-5">
+            <div className="p-2 bd-highlight">
               <button type="submit" className="btn btn-outline-secondary">
                 Cancel
               </button>
             </div>
-            <div class="p-2 bd-highlight">
+            <div className="p-2 bd-highlight">
               <button type="submit" className="btn btn-primary">
                 save Engineering object
               </button>
