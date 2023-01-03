@@ -34,7 +34,7 @@ function FormGeneratorPage() {
   }
   return (
     <FormContext.Provider value={{ handleChange }}>
-      <div className="form-Main container">
+      <div className="container d-flex flex-column">
         <h3>{pageLabel}</h3>
         <form className="">
           {fields
