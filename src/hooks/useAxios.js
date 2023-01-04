@@ -1,11 +1,11 @@
-import { useState, useEffect } from 'react';
-import axios from '../utilities/axios';
+import { useState, useEffect } from "react";
+import axios from "../utilities/axios";
 
 axios.defaults.baseURL = process.env.BASE_URL;
 
 const useAxios = ({ url, method, body = null, headers = null }) => {
   const [response, setResponse] = useState(null);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
   const [loading, setloading] = useState(true);
 
   const fetchData = () => {

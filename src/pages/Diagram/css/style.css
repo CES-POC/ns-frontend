@@ -11,56 +11,56 @@ file, You can obtain one at http://jointjs.com/license/rappid_v2.txt
  or from the JointJS+ archive as was distributed by client IO. See the LICENSE file.*/
 
 @font-face {
-  font-family: 'Roboto Condensed';
-  src: url('../assets/fonts/Roboto_Condensed/RobotoCondensed-Light.ttf');
+  font-family: "Roboto Condensed";
+  src: url("../assets/fonts/Roboto_Condensed/RobotoCondensed-Light.ttf");
   font-weight: 300;
 }
 
 @font-face {
-  font-family: 'Roboto Condensed';
-  src: url('../assets/fonts/Roboto_Condensed/RobotoCondensed-Regular.ttf');
+  font-family: "Roboto Condensed";
+  src: url("../assets/fonts/Roboto_Condensed/RobotoCondensed-Regular.ttf");
   font-weight: Normal;
 }
 
 @font-face {
-  font-family: 'Roboto Condensed';
-  src: url('../assets/fonts/Roboto_Condensed/RobotoCondensed-Bold.ttf');
+  font-family: "Roboto Condensed";
+  src: url("../assets/fonts/Roboto_Condensed/RobotoCondensed-Bold.ttf");
   font-weight: Bold;
 }
 
 @font-face {
-  font-family: 'Averia Libre';
-  src: url('../assets/fonts/Averia_Libre/AveriaLibre-Light.ttf');
+  font-family: "Averia Libre";
+  src: url("../assets/fonts/Averia_Libre/AveriaLibre-Light.ttf");
   font-weight: 300;
 }
 
 @font-face {
-  font-family: 'Averia Libre';
-  src: url('../assets/fonts/Averia_Libre/AveriaLibre-Regular.ttf');
+  font-family: "Averia Libre";
+  src: url("../assets/fonts/Averia_Libre/AveriaLibre-Regular.ttf");
   font-weight: Normal;
 }
 
 @font-face {
-  font-family: 'Averia Libre';
-  src: url('../assets/fonts/Averia_Libre/AveriaLibre-Bold.ttf');
+  font-family: "Averia Libre";
+  src: url("../assets/fonts/Averia_Libre/AveriaLibre-Bold.ttf");
   font-weight: Bold;
 }
 
 @font-face {
-  font-family: 'Alegreya Sans';
-  src: url('../assets/fonts/Alegreya_Sans/AlegreyaSans-Light.ttf');
+  font-family: "Alegreya Sans";
+  src: url("../assets/fonts/Alegreya_Sans/AlegreyaSans-Light.ttf");
   font-weight: 300;
 }
 
 @font-face {
-  font-family: 'Alegreya Sans';
-  src: url('../assets/fonts/Alegreya_Sans/AlegreyaSans-Regular.ttf');
+  font-family: "Alegreya Sans";
+  src: url("../assets/fonts/Alegreya_Sans/AlegreyaSans-Regular.ttf");
   font-weight: Normal;
 }
 
 @font-face {
-  font-family: 'Alegreya Sans';
-  src: url('../assets/fonts/Alegreya_Sans/AlegreyaSans-Bold.ttf');
+  font-family: "Alegreya Sans";
+  src: url("../assets/fonts/Alegreya_Sans/AlegreyaSans-Bold.ttf");
   font-weight: Bold;
 }
 
@@ -125,16 +125,17 @@ body,
   width: 240px;
   box-sizing: border-box;
 }
-.object-property[data-property$='/fill'],
-.object-property[data-property$='/stroke'],
-.field[data-field$='/fill'],
-.field[data-field$='/stroke'] {
+.object-property[data-property$="/fill"],
+.object-property[data-property$="/stroke"],
+.field[data-field$="/fill"],
+.field[data-field$="/stroke"] {
   display: inline-block;
   vertical-align: top;
   width: 50%;
 }
 
-.joint-select-box.joint-color-palette .select-box-option:nth-child(2):not(.hover) {
+.joint-select-box.joint-color-palette
+  .select-box-option:nth-child(2):not(.hover) {
   border: inset;
   border-width: 1px;
 }
@@ -161,12 +162,12 @@ body,
   height: 100%;
 }
 
-.joint-stencil .joint-element[data-type='standard.Image'] text,
-.joint-stencil .joint-element[data-type='standard.Cylinder'] text,
-.joint-stencil .joint-element[data-type='standard.InscribedImage'] text,
-.joint-stencil .joint-element[data-type='devs.Atomic'] .inPorts text,
-.joint-stencil .joint-element[data-type='devs.Atomic'] .outPorts text,
-.joint-stencil .joint-element[data-type='pn.Transition'] text,
+.joint-stencil .joint-element[data-type="standard.Image"] text,
+.joint-stencil .joint-element[data-type="standard.Cylinder"] text,
+.joint-stencil .joint-element[data-type="standard.InscribedImage"] text,
+.joint-stencil .joint-element[data-type="devs.Atomic"] .inPorts text,
+.joint-stencil .joint-element[data-type="devs.Atomic"] .outPorts text,
+.joint-stencil .joint-element[data-type="pn.Transition"] text,
 .joint-stencil .joint-element .joint-port text {
   display: none;
 }
@@ -191,8 +192,8 @@ body,
   padding: 0 4px;
 }
 
-.toolbar-container button.joint-widget[data-type='zoomIn'],
-.toolbar-container button.joint-widget[data-type='zoomOut'] {
+.toolbar-container button.joint-widget[data-type="zoomIn"],
+.toolbar-container button.joint-widget[data-type="zoomOut"] {
   display: none;
 }
 

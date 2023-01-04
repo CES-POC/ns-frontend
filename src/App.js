@@ -1,11 +1,11 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import Layout from "./layouts/Layout";
 import FormBuilderPage from "./pages/FormBuilderPage";
 import FormGeneratorPage from "./pages/FormGeneratorPage";
 import Diagram from "./pages/Diagram";
+import DashboardPage from "./pages/DashboardPage";
 
 const App = () => (
   <BrowserRouter>
@@ -25,7 +25,7 @@ const App = () => (
         path="/"
         element={
           <Layout>
-            <HomePage />
+            <DashboardPage />
           </Layout>
         }
       />

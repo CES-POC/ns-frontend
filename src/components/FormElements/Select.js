@@ -1,12 +1,8 @@
-import { useContext } from 'react'
-import { FormContext } from '../../utilities/formgeneratorContext'
+import { useContext } from "react";
+import { FormContext } from "../../utilities/formgeneratorContext";
 
-const Select = ({
-  fieldId,
-  fieldLabel,
-  fieldOptions,
-}) => {
-  const { handleChange } = useContext(FormContext)
+const Select = ({ fieldId, fieldLabel, fieldOptions }) => {
+  const { handleChange } = useContext(FormContext);
 
   return (
     <>
@@ -25,7 +21,7 @@ const Select = ({
           ))}
       </select>
     </>
-  )
-}
+  );
+};
 
-export default Select
+export default Select;

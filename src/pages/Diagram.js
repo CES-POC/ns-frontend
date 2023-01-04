@@ -1,19 +1,19 @@
-import React, { Component } from 'react';
-import { setTheme } from '@clientio/rappid';
+import React, { Component } from "react";
+import { setTheme } from "@clientio/rappid";
 
-import { StencilService } from './Diagram/services/stencil-service';
-import { ToolbarService } from './Diagram/services/toolbar-service';
-import { InspectorService } from './Diagram/services/inspector-service';
-import { HaloService } from './Diagram/services/halo-service';
-import { KeyboardService } from './Diagram/services/keyboard-service';
-import RappidService from './Diagram/services/kitchen-sink-service';
+import { StencilService } from "./Diagram/services/stencil-service";
+import { ToolbarService } from "./Diagram/services/toolbar-service";
+import { InspectorService } from "./Diagram/services/inspector-service";
+import { HaloService } from "./Diagram/services/halo-service";
+import { KeyboardService } from "./Diagram/services/keyboard-service";
+import RappidService from "./Diagram/services/kitchen-sink-service";
 
-import { ThemePicker } from './Diagram/views/theme-picker';
-import { sampleGraphs } from './Diagram/config/sample-graphs';
+import { ThemePicker } from "./Diagram/views/theme-picker";
+import { sampleGraphs } from "./Diagram/config/sample-graphs";
 
-import './Diagram/css/style.css';
-import './Diagram/css/theme-picker.css';
-import '../assets/scss/DrawToolPage/DrawToolPage.scss';
+import "./Diagram/css/style.css";
+import "./Diagram/css/theme-picker.css";
+import "../assets/scss/DrawToolPage/DrawToolPage.scss";
 
 class Diagram extends Component {
   constructor(props) {
@@ -23,7 +23,7 @@ class Diagram extends Component {
   }
 
   componentDidMount() {
-    setTheme('modern');
+    setTheme("modern");
 
     const service = new RappidService(
       this.appRef.current,
@@ -52,47 +52,47 @@ class Diagram extends Component {
 
   render() {
     return (
-      <div ref={this.appRef} className='Diagram'>
-        <div className='app-header row'>
-          <div className='col'>
-            <div className='app-title '>
-              <img src='/logo512.png' className='p-2 img-fluid' alt='' />
+      <div ref={this.appRef} className="Diagram">
+        <div className="app-header row">
+          <div className="col">
+            <div className="app-title ">
+              <img src="/logo512.png" className="p-2 img-fluid" alt="" />
             </div>
           </div>
-          <div className='col'></div>
-          <div className='col px-3 hr-sec'>
-            <button className='btn btn-info '>Upload</button>
+          <div className="col"></div>
+          <div className="col px-3 hr-sec">
+            <button className="btn btn-info ">Upload</button>
           </div>
         </div>
-        <div className='app-body'>
-          <div className='stencil-container' />
-          <div className='paper-container' />
-          <div className='sidebar'>
-            <ul className='nav nav-tabs custom-tabs' id='myTab' role='tablist'>
-              <li className='nav-item' role='presentation'>
+        <div className="app-body">
+          <div className="stencil-container" />
+          <div className="paper-container" />
+          <div className="sidebar">
+            <ul className="nav nav-tabs custom-tabs" id="myTab" role="tablist">
+              <li className="nav-item" role="presentation">
                 <button
-                  className='nav-link active'
-                  id='home-tab'
-                  data-bs-toggle='tab'
-                  data-bs-target='#home'
-                  type='button'
-                  role='tab'
-                  aria-controls='home'
-                  aria-selected='true'
+                  className="nav-link active"
+                  id="home-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#home"
+                  type="button"
+                  role="tab"
+                  aria-controls="home"
+                  aria-selected="true"
                 >
                   Presentation
                 </button>
               </li>
-              <li className='nav-item' role='presentation'>
+              <li className="nav-item" role="presentation">
                 <button
-                  className='nav-link'
-                  id='profile-tab'
-                  data-bs-toggle='tab'
-                  data-bs-target='#profile'
-                  type='button'
-                  role='tab'
-                  aria-controls='profile'
-                  aria-selected='false'
+                  className="nav-link"
+                  id="profile-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#profile"
+                  type="button"
+                  role="tab"
+                  aria-controls="profile"
+                  aria-selected="false"
                 >
                   Tools
                 </button>
@@ -100,20 +100,25 @@ class Diagram extends Component {
             </ul>
           </div>
 
-          <div className='navigator-container' />
+          <div className="navigator-container" />
         </div>
 
-        <div className='tab-content' id='myTabContent'>
+        <div className="tab-content" id="myTabContent">
           <div
-            className='tab-pane fade show active'
-            id='home'
-            role='tabpanel'
-            aria-labelledby='home-tab'
+            className="tab-pane fade show active"
+            id="home"
+            role="tabpanel"
+            aria-labelledby="home-tab"
           >
-            <div className='inspector-container' />
+            <div className="inspector-container" />
           </div>
-          <div className='tab-pane fade' id='profile' role='tabpanel' aria-labelledby='profile-tab'>
-            <div className='toolbar-container' />
+          <div
+            className="tab-pane fade"
+            id="profile"
+            role="tabpanel"
+            aria-labelledby="profile-tab"
+          >
+            <div className="toolbar-container" />
           </div>
         </div>
       </div>

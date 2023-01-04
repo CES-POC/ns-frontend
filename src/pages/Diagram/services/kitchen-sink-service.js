@@ -10,14 +10,21 @@ This Source Code Form is subject to the terms of the JointJS+ Trial License
 file, You can obtain one at http://jointjs.com/license/rappid_v2.txt
  or from the JointJS+ archive as was distributed by client IO. See the LICENSE file.*/
 
-import * as joint from '@clientio/rappid';
-import * as dagre from 'dagre';
-import * as appShapes from '../shapes/app-shapes';
+import * as joint from "@clientio/rappid";
+import * as dagre from "dagre";
+import * as appShapes from "../shapes/app-shapes";
 
 class KitchenSinkService {
-  constructor(el, stencilService, toolbarService, inspectorService, haloService, keyboardService) {
+  constructor(
+    el,
+    stencilService,
+    toolbarService,
+    inspectorService,
+    haloService,
+    keyboardService
+  ) {
     // backwards compatibility for older shapes
-    this.exportStylesheet = '.scalable * { vector-effect: non-scaling-stroke }';
+    this.exportStylesheet = ".scalable * { vector-effect: non-scaling-stroke }";
     this.el = el;
 
     // apply current joint js theme
@@ -34,7 +41,7 @@ class KitchenSinkService {
   }
 
   startRappid() {
-    joint.setTheme('modern');
+    joint.setTheme("modern");
 
     this.initializePaper();
     this.initializeStencil();
@@ -83,12 +90,14 @@ class KitchenSinkService {
       // }
     }));
 
-    paper.on('blank:contextmenu', (evt) => {
+    paper.on("blank:contextmenu", (evt) => {
       this.renderContextToolbar({ x: evt.clientX, y: evt.clientY });
     });
 
-    paper.on('cell:contextmenu', (cellView, evt) => {
-      this.renderContextToolbar({ x: evt.clientX, y: evt.clientY }, [cellView.model]);
+    paper.on("cell:contextmenu", (cellView, evt) => {
+      this.renderContextToolbar({ x: evt.clientX, y: evt.clientY }, [
+        cellView.model,
+      ]);
     });
 
     this.snaplines = new joint.ui.Snaplines({ paper: paper });
@@ -97,22 +106,28 @@ class KitchenSinkService {
       paper,
       autoResizePaper: true,
       scrollWhileDragging: true,
-      cursor: 'grab',
+      cursor: "grab",
     }));
 
-    this.renderPlugin('.paper-container', paperScroller);
+    this.renderPlugin(".paper-container", paperScroller);
     paperScroller.render().center();
 
-    paper.on('paper:pan', (evt, tx, ty) => {
+    paper.on("paper:pan", (evt, tx, ty) => {
       evt.preventDefault();
       paperScroller.el.scrollLeft += tx;
       paperScroller.el.scrollTop += ty;
     });
 
-    paper.on('paper:pinch', (evt, ox, oy, scale) => {
+    paper.on("paper:pinch", (evt, ox, oy, scale) => {
       // the default is already prevented
       const zoom = paperScroller.zoom();
-      paperScroller.zoom(zoom * scale, { min: 0.2, max: 5, ox, oy, absolute: true });
+      paperScroller.zoom(zoom * scale, {
+        min: 0.2,
+        max: 5,
+        ox,
+        oy,
+        absolute: true,
+      });
     });
   }
 
@@ -120,23 +135,23 @@ class KitchenSinkService {
     const { stencilService, paperScroller, snaplines, graph } = this;
     stencilService.create(paperScroller, snaplines);
 
-    this.renderPlugin('.stencil-container', stencilService.stencil);
+    this.renderPlugin(".stencil-container", stencilService.stencil);
     stencilService.setShapes();
 
-    stencilService.stencil.on('element:drop', (elementView) => {
+    stencilService.stencil.on("element:drop", (elementView) => {
       this.selection.collection.reset([elementView.model]);
     });
     stencilService.stencil.on(
-      'element:dragend',
+      "element:dragend",
       function (cloneView, _evt, cloneArea, validDropTarget) {
         if (!validDropTarget) return;
-        if (cloneView.model.get('type') === 'app.RectangularModel') {
+        if (cloneView.model.get("type") === "app.RectangularModel") {
           // do not add the stencil clone to the graph
           stencilService.stencil.cancelDrag({ dropAnimation: false });
           const strokeColor = cloneView.model.attributes.attrs.body.stroke;
           // add an actual link instead
           const link = new joint.shapes.standard.Link();
-          link.attr('line/stroke', strokeColor);
+          link.attr("line/stroke", strokeColor);
           link.source(cloneArea.topLeft());
           link.target(cloneArea.topRight());
           link.addTo(graph);
@@ -150,16 +165,20 @@ class KitchenSinkService {
     this.selection = new joint.ui.Selection({
       paper: this.paper,
       useModelGeometry: true,
-      translateConnectedLinks: joint.ui.Selection.ConnectedLinksTranslation.SUBGRAPH,
+      translateConnectedLinks:
+        joint.ui.Selection.ConnectedLinksTranslation.SUBGRAPH,
     });
-    this.selection.collection.on('reset add remove', this.onSelectionChange.bind(this));
+    this.selection.collection.on(
+      "reset add remove",
+      this.onSelectionChange.bind(this)
+    );
 
     const keyboard = this.keyboardService.keyboard;
 
     // Initiate selecting when the user grabs the blank area of the paper while the Shift key is pressed.
     // Otherwise, initiate paper pan.
-    this.paper.on('blank:pointerdown', (evt, x, y) => {
-      if (keyboard.isActive('shift', evt)) {
+    this.paper.on("blank:pointerdown", (evt, x, y) => {
+      if (keyboard.isActive("shift", evt)) {
         this.selection.startSelecting(evt);
       } else {
         this.selection.collection.reset([]);
@@ -168,25 +187,27 @@ class KitchenSinkService {
       }
     });
 
-    this.paper.on('element:pointerdown', (elementView, evt) => {
+    this.paper.on("element:pointerdown", (elementView, evt) => {
       // Select an element if CTRL/Meta key is pressed while the element is clicked.
-      if (keyboard.isActive('ctrl meta', evt)) {
+      if (keyboard.isActive("ctrl meta", evt)) {
         this.selection.collection.add(elementView.model);
       }
     });
 
-    this.graph.on('remove', (cell) => {
+    this.graph.on("remove", (cell) => {
       // If element is removed from the graph, remove from the selection too.
       if (this.selection.collection.has(cell)) {
-        this.selection.collection.reset(this.selection.collection.models.filter((c) => c !== cell));
+        this.selection.collection.reset(
+          this.selection.collection.models.filter((c) => c !== cell)
+        );
       }
     });
 
     this.selection.on(
-      'selection-box:pointerdown',
+      "selection-box:pointerdown",
       (elementView, evt) => {
         // Unselect an element if the CTRL/Meta key is pressed while a selected element is clicked.
-        if (keyboard.isActive('ctrl meta', evt)) {
+        if (keyboard.isActive("ctrl meta", evt)) {
           this.selection.collection.remove(elementView.model);
         }
       },
@@ -194,7 +215,7 @@ class KitchenSinkService {
     );
 
     this.selection.on(
-      'selection-box:pointerup',
+      "selection-box:pointerup",
       (elementView, evt) => {
         if (evt.button === 2) {
           evt.stopPropagation();
@@ -243,8 +264,8 @@ class KitchenSinkService {
     new joint.ui.FreeTransform({
       cellView: elementView,
       allowRotation: false,
-      preserveAspectRatio: !!element.get('preserveAspectRatio'),
-      allowOrthogonalResize: element.get('allowOrthogonalResize') !== false,
+      preserveAspectRatio: !!element.get("preserveAspectRatio"),
+      allowOrthogonalResize: element.get("allowOrthogonalResize") !== false,
     }).render();
 
     this.haloService.create(elementView);
@@ -253,7 +274,7 @@ class KitchenSinkService {
   selectPrimaryLink(linkView) {
     const ns = joint.linkTools;
     const toolsView = new joint.dia.ToolsView({
-      name: 'link-pointerdown',
+      name: "link-pointerdown",
       tools: [
         new ns.Vertices(),
         new ns.SourceAnchor(),
@@ -270,7 +291,7 @@ class KitchenSinkService {
   }
 
   initializeToolsAndInspector() {
-    this.paper.on('cell:pointerup', (cellView) => {
+    this.paper.on("cell:pointerup", (cellView) => {
       const cell = cellView.model;
       const { collection } = this.selection;
       if (collection.includes(cell)) {
@@ -279,7 +300,7 @@ class KitchenSinkService {
       collection.reset([cell]);
     });
 
-    this.paper.on('link:mouseenter', (linkView) => {
+    this.paper.on("link:mouseenter", (linkView) => {
       // Open tool only if there is none yet
       if (linkView.hasTools()) {
         return;
@@ -287,7 +308,7 @@ class KitchenSinkService {
 
       const ns = joint.linkTools;
       const toolsView = new joint.dia.ToolsView({
-        name: 'link-hover',
+        name: "link-hover",
         tools: [
           new ns.Vertices({ vertexAdding: false }),
           new ns.SourceArrowhead(),
@@ -298,21 +319,21 @@ class KitchenSinkService {
       linkView.addTools(toolsView);
     });
 
-    this.paper.on('link:mouseleave', (linkView) => {
+    this.paper.on("link:mouseleave", (linkView) => {
       // Remove only the hover tool, not the pointerdown tool
-      if (linkView.hasTools('link-hover')) {
+      if (linkView.hasTools("link-hover")) {
         linkView.removeTools();
       }
     });
 
-    this.graph.on('change', (cell, opt) => {
+    this.graph.on("change", (cell, opt) => {
       if (!cell.isLink() || !opt.inspector) {
         return;
       }
 
       const ns = joint.linkTools;
       const toolsView = new joint.dia.ToolsView({
-        name: 'link-inspected',
+        name: "link-inspected",
         tools: [new ns.Boundary({ padding: 15 })],
       });
 
@@ -337,25 +358,25 @@ class KitchenSinkService {
       },
     }));
 
-    this.renderPlugin('.navigator-container', navigator);
+    this.renderPlugin(".navigator-container", navigator);
   }
 
   initializeToolbar() {
     this.toolbarService.create(this.commandManager, this.paperScroller);
 
     this.toolbarService.toolbar.on({
-      'svg:pointerclick': this.openAsSVG.bind(this),
-      'png:pointerclick': this.openAsPNG.bind(this),
-      'to-front:pointerclick': this.applyOnSelection.bind(this, 'toFront'),
-      'to-back:pointerclick': this.applyOnSelection.bind(this, 'toBack'),
-      'layout:pointerclick': this.layoutDirectedGraph.bind(this),
-      'snapline:change': this.changeSnapLines.bind(this),
-      'clear:pointerclick': this.graph.clear.bind(this.graph),
-      'print:pointerclick': this.paper.print.bind(this.paper),
-      'grid-size:change': this.paper.setGridSize.bind(this.paper),
+      "svg:pointerclick": this.openAsSVG.bind(this),
+      "png:pointerclick": this.openAsPNG.bind(this),
+      "to-front:pointerclick": this.applyOnSelection.bind(this, "toFront"),
+      "to-back:pointerclick": this.applyOnSelection.bind(this, "toBack"),
+      "layout:pointerclick": this.layoutDirectedGraph.bind(this),
+      "snapline:change": this.changeSnapLines.bind(this),
+      "clear:pointerclick": this.graph.clear.bind(this.graph),
+      "print:pointerclick": this.paper.print.bind(this.paper),
+      "grid-size:change": this.paper.setGridSize.bind(this.paper),
     });
 
-    this.renderPlugin('.toolbar-container', this.toolbarService.toolbar);
+    this.renderPlugin(".toolbar-container", this.toolbarService.toolbar);
   }
 
   renderContextToolbar(point, cellsToCopy = []) {
@@ -365,18 +386,18 @@ class KitchenSinkService {
       root: this.paper.el,
       padding: 0,
       vertical: true,
-      anchor: 'top-left',
+      anchor: "top-left",
       tools: [
         {
-          action: 'copy',
-          content: 'Copy',
+          action: "copy",
+          content: "Copy",
           attrs: {
             disabled: cellsToCopy.length === 0,
           },
         },
         {
-          action: 'paste',
-          content: 'Paste',
+          action: "paste",
+          content: "Paste",
           attrs: {
             disabled: this.clipboard.isEmpty(),
           },
@@ -384,13 +405,13 @@ class KitchenSinkService {
       ],
     });
 
-    contextToolbar.on('action:copy', () => {
+    contextToolbar.on("action:copy", () => {
       contextToolbar.remove();
 
       this.clipboard.copyElements(cellsToCopy, this.graph);
     });
 
-    contextToolbar.on('action:paste', () => {
+    contextToolbar.on("action:paste", () => {
       contextToolbar.remove();
       const pastedCells = this.clipboard.pasteCellsAtPoint(
         this.graph,
@@ -407,11 +428,11 @@ class KitchenSinkService {
   }
 
   applyOnSelection(method) {
-    this.graph.startBatch('selection');
+    this.graph.startBatch("selection");
     this.selection.collection.models.forEach(function (model) {
       model[method]();
     });
-    this.graph.stopBatch('selection');
+    this.graph.stopBatch("selection");
   }
 
   changeSnapLines(checked) {
@@ -435,7 +456,7 @@ class KitchenSinkService {
   initializeTooltips() {
     this.tooltip = new joint.ui.Tooltip({
       rootTarget: document.body,
-      target: '[data-tooltip]',
+      target: "[data-tooltip]",
       direction: joint.ui.Tooltip.TooltipArrowPosition.Auto,
       padding: 10,
     });
@@ -445,9 +466,9 @@ class KitchenSinkService {
     this.paper.hideTools().toSVG(
       (svg) => {
         new joint.ui.Lightbox({
-          image: 'data:image/svg+xml,' + encodeURIComponent(svg),
+          image: "data:image/svg+xml," + encodeURIComponent(svg),
           downloadable: true,
-          fileName: 'Rappid',
+          fileName: "Rappid",
         }).open();
         this.paper.showTools();
       },
@@ -466,7 +487,7 @@ class KitchenSinkService {
         new joint.ui.Lightbox({
           image: dataURL,
           downloadable: true,
-          fileName: 'Rappid',
+          fileName: "Rappid",
         }).open();
         this.paper.showTools();
       },
@@ -483,7 +504,7 @@ class KitchenSinkService {
       graphlib: dagre.graphlib,
       dagre: dagre,
       setVertices: true,
-      rankDir: 'TB',
+      rankDir: "TB",
       marginX: 100,
       marginY: 100,
     });

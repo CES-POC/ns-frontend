@@ -1,5 +1,5 @@
 import React from "react";
-import '../../assets/scss/main.scss'
+import "../../assets/scss/main.scss";
 
 const Choose = () => {
   let option_id = [0, 1, 2];

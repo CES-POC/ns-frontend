@@ -1,10 +1,10 @@
 /* eslint-disable no-restricted-globals */
-import { clientsClaim } from 'workbox-core';
-import { ExpirationPlugin } from 'workbox-expiration';
-import { precacheAndRoute, createHandlerBoundToURL } from 'workbox-precaching';
-import { registerRoute } from 'workbox-routing';
-import { StaleWhileRevalidate, CacheFirst } from 'workbox-strategies';
-import { CacheableResponsePlugin } from 'workbox-cacheable-response';
+import { clientsClaim } from "workbox-core";
+import { ExpirationPlugin } from "workbox-expiration";
+import { precacheAndRoute, createHandlerBoundToURL } from "workbox-precaching";
+import { registerRoute } from "workbox-routing";
+import { StaleWhileRevalidate, CacheFirst } from "workbox-strategies";
+import { CacheableResponsePlugin } from "workbox-cacheable-response";
 
 // const baseUrl = 'https://neobck.azurewebsites.net';
 
@@ -15,11 +15,11 @@ precacheAndRoute(self.__WB_MANIFEST);
 
 const fileExtensionRegexp = /\/[^\/?]+\.[^\/]+$/;
 registerRoute(({ request, url }) => {
-  if (request.mode !== 'navigate') {
+  if (request.mode !== "navigate") {
     return false;
   }
 
-  if (url.pathname.startsWith('/_')) {
+  if (url.pathname.startsWith("/_")) {
     return false;
   }
 
@@ -28,33 +28,35 @@ registerRoute(({ request, url }) => {
   }
 
   return true;
-}, createHandlerBoundToURL(process.env.PUBLIC_URL + '/index.html'));
+}, createHandlerBoundToURL(process.env.PUBLIC_URL + "/index.html"));
 
 registerRoute(
-  ({ url }) => url.origin === self.location.origin && url.pathname.endsWith('.png', '.jpg'),
+  ({ url }) =>
+    url.origin === self.location.origin &&
+    url.pathname.endsWith(".png", ".jpg"),
   new StaleWhileRevalidate({
-    cacheName: 'images',
+    cacheName: "images",
     plugins: [new ExpirationPlugin({ maxEntries: 50 })],
   })
 );
 
-self.addEventListener('message', (event) => {
-  if (event.data && event.data.type === 'SKIP_WAITING') {
+self.addEventListener("message", (event) => {
+  if (event.data && event.data.type === "SKIP_WAITING") {
     self.skipWaiting();
   }
 });
 
 registerRoute(
-  ({ url }) => url.origin === 'https://fonts.googleapis.com',
+  ({ url }) => url.origin === "https://fonts.googleapis.com",
   new StaleWhileRevalidate({
-    cacheName: 'google-fonts-stylesheets',
+    cacheName: "google-fonts-stylesheets",
   })
 );
 
 registerRoute(
-  ({ url }) => url.origin === 'https://fonts.googleapis.com',
+  ({ url }) => url.origin === "https://fonts.googleapis.com",
   new CacheFirst({
-    cacheName: 'google-fonts-webfonts',
+    cacheName: "google-fonts-webfonts",
     plugins: [
       new CacheableResponsePlugin({
         statuses: [0, 200],
@@ -66,11 +68,13 @@ registerRoute(
     ],
   })
 );
-const regX = new RegExp('https://cdn\\.third-party-site\\.com.*/styles/.*\\.css');
+const regX = new RegExp(
+  "https://cdn\\.third-party-site\\.com.*/styles/.*\\.css"
+);
 registerRoute(
   ({ url }) => url.origin === regX,
   new CacheFirst({
-    cacheName: 'google-fonts-webfonts',
+    cacheName: "google-fonts-webfonts",
     plugins: [
       new CacheableResponsePlugin({
         statuses: [0, 200],
@@ -85,9 +89,10 @@ registerRoute(
 
 registerRoute(
   ({ url }) =>
-    url.origin === 'https://neobck.azurewebsites.net' && url.pathname.startsWith('/api/paper'),
+    url.origin === "https://neobck.azurewebsites.net" &&
+    url.pathname.startsWith("/api/paper"),
   new StaleWhileRevalidate({
-    cacheName: 'api-paper',
+    cacheName: "api-paper",
     plugins: [
       new CacheableResponsePlugin({
         statuses: [0, 200],
@@ -98,9 +103,10 @@ registerRoute(
 );
 registerRoute(
   ({ url }) =>
-    url.origin === 'https://neobck.azurewebsites.net' && url.pathname.startsWith('/api/paper/'),
+    url.origin === "https://neobck.azurewebsites.net" &&
+    url.pathname.startsWith("/api/paper/"),
   new StaleWhileRevalidate({
-    cacheName: 'api-paper',
+    cacheName: "api-paper",
     plugins: [
       new CacheableResponsePlugin({
         statuses: [0, 200],
@@ -111,9 +117,10 @@ registerRoute(
 );
 registerRoute(
   ({ url }) =>
-    url.origin === 'https://neobck.azurewebsites.net' && url.pathname.startsWith('/api/shapes'),
+    url.origin === "https://neobck.azurewebsites.net" &&
+    url.pathname.startsWith("/api/shapes"),
   new StaleWhileRevalidate({
-    cacheName: 'api-paper',
+    cacheName: "api-paper",
     plugins: [
       new CacheableResponsePlugin({
         statuses: [0, 200],
@@ -124,9 +131,9 @@ registerRoute(
 );
 
 registerRoute(
-  ({ request }) => request.destination === 'image',
+  ({ request }) => request.destination === "image",
   new CacheFirst({
-    cacheName: 'images',
+    cacheName: "images",
     plugins: [
       new CacheableResponsePlugin({
         statuses: [0, 200],

@@ -10,12 +10,11 @@ This Source Code Form is subject to the terms of the JointJS+ Trial License
 file, You can obtain one at http://jointjs.com/license/rappid_v2.txt
  or from the JointJS+ archive as was distributed by client IO. See the LICENSE file.*/
 
-
 /*  Toolbar  */
 .joint-theme-picker {
-    position: absolute;
-    bottom: 20px;
-    right: 260px;
-    border-radius: 5px;
-    padding: 3px 1px !important;
+  position: absolute;
+  bottom: 20px;
+  right: 260px;
+  border-radius: 5px;
+  padding: 3px 1px !important;
 }

@@ -1,4 +1,4 @@
-import * as types from '../actionsTypes/actionTypes'
+import * as types from "../actionsTypes/actionTypes";
 
 const paperReducer = (state = {}, action) => {
   switch (action.type) {
@@ -6,21 +6,21 @@ const paperReducer = (state = {}, action) => {
       return {
         ...state,
         loading: true,
-      }
+      };
     case types.FETCH_PAPER_SUCCESS:
       return {
         ...state,
         loading: false,
         papers: action.payload,
-      }
+      };
     case types.FETCH_PAPER_FAIL:
       return {
         ...state,
         loading: false,
         error: action.payload,
-      }
+      };
     default:
-      return state
+      return state;
   }
-}
-export default paperReducer
+};
+export default paperReducer;

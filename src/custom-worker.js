@@ -7,12 +7,12 @@
 // You can also remove this file if you'd prefer not to use a
 // service worker, and the Workbox build step will be skipped.
 
-import { clientsClaim } from 'workbox-core';
-import { ExpirationPlugin } from 'workbox-expiration';
-import { precacheAndRoute } from 'workbox-precaching';
-import { registerRoute } from 'workbox-routing';
-import { StaleWhileRevalidate, CacheFirst } from 'workbox-strategies';
-import { CacheableResponsePlugin } from 'workbox-cacheable-response';
+import { clientsClaim } from "workbox-core";
+import { ExpirationPlugin } from "workbox-expiration";
+import { precacheAndRoute } from "workbox-precaching";
+import { registerRoute } from "workbox-routing";
+import { StaleWhileRevalidate, CacheFirst } from "workbox-strategies";
+import { CacheableResponsePlugin } from "workbox-cacheable-response";
 
 clientsClaim();
 
@@ -21,16 +21,16 @@ self.skipWaiting();
 precacheAndRoute(self.__WB_MANIFEST);
 
 registerRoute(
-  ({ url }) => url.origin === 'https://fonts.googleapis.com',
+  ({ url }) => url.origin === "https://fonts.googleapis.com",
   new StaleWhileRevalidate({
-    cacheName: 'google-fonts-stylesheets',
+    cacheName: "google-fonts-stylesheets",
   })
 );
 
 registerRoute(
-  ({ url }) => url.origin === 'https://fonts.gstatic.com',
+  ({ url }) => url.origin === "https://fonts.gstatic.com",
   new CacheFirst({
-    cacheName: 'google-fonts-webfonts',
+    cacheName: "google-fonts-webfonts",
     plugins: [
       new CacheableResponsePlugin({
         statuses: [0, 200],
@@ -44,9 +44,11 @@ registerRoute(
 );
 
 registerRoute(
-  ({ url }) => url.origin === 'https://dummyjson.com' && url.pathname.startsWith(`/products`),
+  ({ url }) =>
+    url.origin === "https://dummyjson.com" &&
+    url.pathname.startsWith(`/products`),
   new StaleWhileRevalidate({
-    cacheName: 'api-response',
+    cacheName: "api-response",
     plugins: [
       new CacheableResponsePlugin({
         statuses: [0, 200],
@@ -57,9 +59,9 @@ registerRoute(
 );
 
 registerRoute(
-  ({ request }) => request.destination === 'image',
+  ({ request }) => request.destination === "image",
   new CacheFirst({
-    cacheName: 'images',
+    cacheName: "images",
     plugins: [
       new CacheableResponsePlugin({
         statuses: [0, 200],
@@ -74,8 +76,9 @@ registerRoute(
 
 // @see https://developers.google.com/web/tools/workbox/guides/common-recipes#cache_css_and_javascript_files
 registerRoute(
-  ({ request }) => request.destination === 'script' || request.destination === 'style',
+  ({ request }) =>
+    request.destination === "script" || request.destination === "style",
   new StaleWhileRevalidate({
-    cacheName: 'static-resources',
+    cacheName: "static-resources",
   })
 );

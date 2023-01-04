@@ -1,6 +1,6 @@
-import Checkbox from './Checkbox'
-import Input from './Input'
-import Select from './Select'
+import Checkbox from "./Checkbox";
+import Input from "./Input";
+import Select from "./Select";
 
 const Element = ({
   field: {
@@ -13,7 +13,7 @@ const Element = ({
   },
 }) => {
   switch (fieldType) {
-    case 'text':
+    case "text":
       return (
         <Input
           fieldId={fieldId}
@@ -21,8 +21,8 @@ const Element = ({
           fieldPlaceholder={fieldPlaceholder}
           fieldValue={fieldValue}
         />
-      )
-    case 'select':
+      );
+    case "select":
       return (
         <Select
           fieldId={fieldId}
@@ -31,19 +31,19 @@ const Element = ({
           fieldValue={fieldValue}
           fieldOptions={fieldOptions}
         />
-      )
-    case 'checkbox':
+      );
+    case "checkbox":
       return (
         <Checkbox
           fieldId={fieldId}
           fieldLabel={fieldLabel}
           fieldValue={fieldValue}
         />
-      )
+      );
 
     default:
-      return null
+      return null;
   }
-}
+};
 
-export default Element
+export default Element;

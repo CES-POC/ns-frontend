@@ -1,8 +1,8 @@
-import { useContext } from 'react'
-import { FormContext } from '../../utilities/formgeneratorContext'
+import { useContext } from "react";
+import { FormContext } from "../../utilities/formgeneratorContext";
 
 const Checkbox = ({ fieldId, fieldLabel, fieldValue }) => {
-  const { handleChange } = useContext(FormContext)
+  const { handleChange } = useContext(FormContext);
   return (
     <div className="mb-3 form-check">
       <input
@@ -16,7 +16,7 @@ const Checkbox = ({ fieldId, fieldLabel, fieldValue }) => {
         {fieldLabel}
       </label>
     </div>
-  )
-}
+  );
+};
 
-export default Checkbox
+export default Checkbox;

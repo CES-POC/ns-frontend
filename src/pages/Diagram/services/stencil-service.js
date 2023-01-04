@@ -10,8 +10,8 @@ This Source Code Form is subject to the terms of the JointJS+ Trial License
 file, You can obtain one at http://jointjs.com/license/rappid_v2.txt
  or from the JointJS+ archive as was distributed by client IO. See the LICENSE file.*/
 
-import { ui, dia, shapes } from '@clientio/rappid';
-import * as appShapes from '../shapes/app-shapes';
+import { ui, dia, shapes } from "@clientio/rappid";
+import * as appShapes from "../shapes/app-shapes";
 
 export class StencilService {
   create(paperScroller, snaplines) {
@@ -34,8 +34,17 @@ export class StencilService {
         };
       },
       search: {
-        '*': ['type', 'attrs/text/text', 'attrs/root/dataTooltip', 'attrs/label/text'],
-        'org.Member': ['attrs/.rank/text', 'attrs/root/dataTooltip', 'attrs/.name/text'],
+        "*": [
+          "type",
+          "attrs/text/text",
+          "attrs/root/dataTooltip",
+          "attrs/label/text",
+        ],
+        "org.Member": [
+          "attrs/.rank/text",
+          "attrs/root/dataTooltip",
+          "attrs/.name/text",
+        ],
       },
       layout: {
         columns: 1,
@@ -52,24 +61,24 @@ export class StencilService {
       // Remove tooltip definition from clone
       // dragStartClone: (cell) => cell.clone().removeAttr('root/dataTooltip')
       dragStartClone: (el) => {
-        el.clone().removeAttr('root/dataTooltip');
-        switch (el.get('type')) {
-          case 'standard.Rectangle':
+        el.clone().removeAttr("root/dataTooltip");
+        switch (el.get("type")) {
+          case "standard.Rectangle":
             return new shapes.standard.Rectangle({
               size: { width: 120, height: 100 },
               attrs: {
                 body: {
-                  strokeDasharray: '10,5',
+                  strokeDasharray: "10,5",
                 },
               },
             });
 
-          case 'standard.Ellipse':
+          case "standard.Ellipse":
             return new shapes.standard.Ellipse({
               size: { width: 120, height: 100 },
               attrs: {
                 body: {
-                  strokeDasharray: '10,5',
+                  strokeDasharray: "10,5",
                 },
               },
             });
@@ -78,30 +87,30 @@ export class StencilService {
         }
       },
       dragEndClone: (el) => {
-        switch (el.get('type')) {
-          case 'standard.Rectangle':
+        switch (el.get("type")) {
+          case "standard.Rectangle":
             return new shapes.standard.Rectangle({
               size: { width: 120, height: 100 },
               attrs: {
                 body: {
-                  fill: 'transparent',
+                  fill: "transparent",
                 },
                 label: {
-                  text: 'Refrigerant',
-                  fontFamily: 'sans-serif',
+                  text: "Refrigerant",
+                  fontFamily: "sans-serif",
                 },
               },
             });
-          case 'standard.Ellipse':
+          case "standard.Ellipse":
             return new shapes.standard.Ellipse({
               size: { width: 120, height: 100 },
               attrs: {
                 body: {
-                  fill: 'transparent',
+                  fill: "transparent",
                 },
                 label: {
-                  text: 'Compressor',
-                  fontFamily: 'sans-serif',
+                  text: "Compressor",
+                  fontFamily: "sans-serif",
                 },
               },
             });
@@ -118,9 +127,9 @@ export class StencilService {
 
   getStencilGroups() {
     return {
-      standard: { index: 1, label: 'Refrigerant' },
-      fsa: { index: 2, label: 'Compressor' },
-      pn: { index: 3, label: 'Pipes 1 (Expanded)' },
+      standard: { index: 1, label: "Refrigerant" },
+      fsa: { index: 2, label: "Compressor" },
+      pn: { index: 3, label: "Pipes 1 (Expanded)" },
       // erd: { index: 4, label: 'Heat Exchange Eqpt' },
       // uml: { index: 5, label: 'Evaporator' },
       // org: { index: 6, label: 'Condenser' }
@@ -131,20 +140,20 @@ export class StencilService {
     return {
       standard: [
         {
-          type: 'standard.Rectangle',
+          type: "standard.Rectangle",
           size: { width: 20, height: 20 },
           position: { x: 0, y: 0 },
           attrs: {
             body: {
-              fill: '#80aaff',
+              fill: "#80aaff",
             },
             label: {
-              text: 'Refrigerant',
-              fill: '#c6c7e2',
+              text: "Refrigerant",
+              fill: "#c6c7e2",
               refX: null, // reset the default
-              x: 'calc(w-30)',
-              textAnchor: 'end',
-              fontFamily: 'sans-serif',
+              x: "calc(w-30)",
+              textAnchor: "end",
+              fontFamily: "sans-serif",
               fontSize: 12,
             },
           },
@@ -466,19 +475,19 @@ export class StencilService {
       ],
       fsa: [
         {
-          type: 'standard.Ellipse',
+          type: "standard.Ellipse",
           size: { width: 20, height: 20 },
           attrs: {
             body: {
-              fill: '#80ffd5',
+              fill: "#80ffd5",
             },
             label: {
-              text: 'Compressor',
-              fill: '#c6c7e2',
+              text: "Compressor",
+              fill: "#c6c7e2",
               refX: null, // reset the default
-              x: 'calc(w-30)',
-              textAnchor: 'end',
-              fontFamily: 'sans-serif',
+              x: "calc(w-30)",
+              textAnchor: "end",
+              fontFamily: "sans-serif",
               fontSize: 12,
             },
           },
@@ -568,80 +577,80 @@ export class StencilService {
       ],
       pn: [
         {
-          type: 'app.RectangularModel',
+          type: "app.RectangularModel",
           size: { width: 120, height: 2 },
           allowOrthogonalResize: false,
           attrs: {
             root: {
-              dataTooltip: 'Rectangle with ports',
-              dataTooltipPosition: 'left',
-              dataTooltipPositionSelector: '.joint-stencil',
+              dataTooltip: "Rectangle with ports",
+              dataTooltipPosition: "left",
+              dataTooltipPositionSelector: ".joint-stencil",
             },
             body: {
-              fill: 'red',
+              fill: "red",
               rx: 2,
               ry: 2,
-              stroke: 'red',
+              stroke: "red",
               strokeWidth: 1,
-              strokeDasharray: '0',
+              strokeDasharray: "0",
             },
           },
         },
         {
-          type: 'app.RectangularModel',
+          type: "app.RectangularModel",
           size: { width: 120, height: 2 },
           allowOrthogonalResize: false,
           attrs: {
             root: {
-              dataTooltip: 'Rectangle with ports',
-              dataTooltipPosition: 'left',
-              dataTooltipPositionSelector: '.joint-stencil',
+              dataTooltip: "Rectangle with ports",
+              dataTooltipPosition: "left",
+              dataTooltipPositionSelector: ".joint-stencil",
             },
             body: {
-              fill: 'blue',
+              fill: "blue",
               rx: 2,
               ry: 2,
-              stroke: 'blue',
+              stroke: "blue",
               strokeWidth: 1,
-              strokeDasharray: '0',
+              strokeDasharray: "0",
             },
           },
         },
         {
-          type: 'app.RectangularModel',
+          type: "app.RectangularModel",
           size: { width: 120, height: 2 },
           allowOrthogonalResize: false,
           attrs: {
             root: {
-              dataTooltip: 'Rectangle with ports',
-              dataTooltipPosition: 'left',
-              dataTooltipPositionSelector: '.joint-stencil',
+              dataTooltip: "Rectangle with ports",
+              dataTooltipPosition: "left",
+              dataTooltipPositionSelector: ".joint-stencil",
             },
             body: {
-              fill: 'black',
+              fill: "black",
               rx: 2,
               ry: 2,
-              stroke: 'black',
+              stroke: "black",
               strokeWidth: 1,
-              strokeDasharray: '0',
+              strokeDasharray: "0",
             },
           },
         },
         {
-          type: 'app.RectangularModel',
+          type: "app.RectangularModel",
           size: { width: 120, height: 2 },
           allowOrthogonalResize: false,
           attrs: {
             root: {
-              dataTooltip: 'Rectangle with ports',
-              dataTooltipPosition: 'left',
-              dataTooltipPositionSelector: '.joint-stencil',
+              dataTooltip: "Rectangle with ports",
+              dataTooltipPosition: "left",
+              dataTooltipPositionSelector: ".joint-stencil",
             },
             body: {
-              fill: 'green',
-              stroke: 'green',
+              fill: "green",
+              stroke: "green",
               strokeWidth: 1,
-              strokeDasharray: '0',
+              strokeDasharray: "0",
             },
           },
         },
@@ -1191,45 +1200,45 @@ export class StencilService {
       ],
       org: [
         {
-          type: 'org.Member',
+          type: "org.Member",
           size: { width: 90, height: 35 },
           attrs: {
-            'root': {
-              dataTooltip: 'Member',
-              dataTooltipPosition: 'left',
-              dataTooltipPositionSelector: '.joint-stencil',
+            root: {
+              dataTooltip: "Member",
+              dataTooltipPosition: "left",
+              dataTooltipPositionSelector: ".joint-stencil",
             },
-            '.rank': {
-              'text': 'Rank',
-              'fill': '#f6f6f6',
-              'font-family': 'Roboto Condensed',
-              'font-size': 12,
-              'font-weight': 'Bold',
-              'text-decoration': 'none',
+            ".rank": {
+              text: "Rank",
+              fill: "#f6f6f6",
+              "font-family": "Roboto Condensed",
+              "font-size": 12,
+              "font-weight": "Bold",
+              "text-decoration": "none",
             },
-            '.name': {
-              'text': 'Person',
-              'fill': '#f6f6f6',
-              'font-family': 'Roboto Condensed',
-              'font-weight': 'Normal',
-              'font-size': 10,
+            ".name": {
+              text: "Person",
+              fill: "#f6f6f6",
+              "font-family": "Roboto Condensed",
+              "font-weight": "Normal",
+              "font-size": 10,
             },
-            '.card': {
-              'fill': '#31d0c6',
-              'stroke': 'transparent',
-              'stroke-width': 0,
-              'stroke-dasharray': '0',
+            ".card": {
+              fill: "#31d0c6",
+              stroke: "transparent",
+              "stroke-width": 0,
+              "stroke-dasharray": "0",
             },
-            'image': {
-              'width': 32,
-              'height': 32,
-              'x': 16,
-              'y': 13,
-              'ref': null,
-              'ref-x': null,
-              'ref-y': null,
-              'y-alignment': null,
-              'xlink:href': '/assets/member-male.png',
+            image: {
+              width: 32,
+              height: 32,
+              x: 16,
+              y: 13,
+              ref: null,
+              "ref-x": null,
+              "ref-y": null,
+              "y-alignment": null,
+              "xlink:href": "/assets/member-male.png",
             },
           },
         },
