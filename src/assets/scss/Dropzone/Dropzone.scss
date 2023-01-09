@@ -1,9 +1,12 @@
+@import "../variables";
+
 .dropzone {
-  text-align: center;
-  padding: 30px;
-  border: 3px dashed #eeeeee;
-  background-color: #fafafa;
-  color: #bdbdbd;
-  cursor: pointer;
-  margin-bottom: 20px;
-}
+    text-align: center;
+    padding: 30px;
+    border: 3px dashed darken($whiteColor, 6.67);
+    background-color: darken($whiteColor, 1.96);
+    color: darken($whiteGreyColor, 6.67);
+    cursor: pointer;
+    margin-bottom: 20px;
+  }
+  

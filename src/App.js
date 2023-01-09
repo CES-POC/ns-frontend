@@ -12,7 +12,15 @@ const App = () => (
     <Routes>
       <Route path="/login" element={<LoginPage />} />
       <Route path="/paper/:id" element={<Diagram title="JointJS+" />} />
-      <Route path="/formbuilder" element={<FormBuilderPage />} />
+      {/* <Route path="/formbuilder" element={<FormBuilderPage />} /> */}
+      <Route
+        path="/formbuilder"
+        element={
+          <Layout>
+            <FormBuilderPage />
+          </Layout>
+        }
+      />
       <Route
         path="/formgenerator"
         element={

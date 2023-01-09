@@ -1,8 +1,7 @@
-import { useEffect, useState } from "react";
-import "../assets/scss/FormGeneratorPage/FormGeneratorPage.scss";
-import Element from "../components/FormElements/Element";
-import formJSON from "../formElement.json";
-import { FormContext } from "../utilities/formgeneratorContext";
+import { useEffect, useState } from 'react';
+import Element from '../components/FormElements/Element';
+import formJSON from '../formElement.json';
+import { FormContext } from '../utilities/formgeneratorContext';
 
 function FormGeneratorPage() {
   const [elements, setElements] = useState(null);
@@ -20,12 +19,12 @@ function FormGeneratorPage() {
       const { fieldType, fieldId } = field;
       if (id === fieldId) {
         switch (fieldType) {
-          case "checkbox":
-            field["fieldValue"] = event.target.checked;
+          case 'checkbox':
+            field['fieldValue'] = event.target.checked;
             break;
 
           default:
-            field["fieldValue"] = event.target.value;
+            field['fieldValue'] = event.target.value;
             break;
         }
       }
@@ -34,17 +33,11 @@ function FormGeneratorPage() {
   };
   return (
     <FormContext.Provider value={{ handleChange }}>
-      <div className="form-Main container">
+      <div className='container d-flex flex-column'>
         <h3>{pageLabel}</h3>
-        <form className="">
-          {fields
-            ? fields.map((field, i) => <Element key={i} field={field} />)
-            : null}
-          <button
-            type="submit"
-            className="btn btn-primary"
-            onClick={(e) => handleSubmit(e)}
-          >
+        <form className=''>
+          {fields ? fields.map((field, i) => <Element key={i} field={field} />) : null}
+          <button type='submit' className='btn btn-primary' onClick={(e) => handleSubmit(e)}>
             Submit
           </button>
         </form>
