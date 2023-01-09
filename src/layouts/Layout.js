@@ -4,8 +4,8 @@ import SideBar from "../components/sideBar/SideBar";
 import "../assets/scss/Layout/Layout.scss";
 
 const Layout = ({ children }) => (
-  <div>
-    <Header />
+  <div className="layout">
+    <div className="layout-header"><Header /></div>
     <div className="layout-mainDiv">
       <SideBar />
       <main className="children-Div">{children}</main>

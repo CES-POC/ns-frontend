@@ -4,18 +4,33 @@ body {
   // overflow-y: scroll;
 }
 .header-mainDiv {
-  background-color: #fff;
-  height: 70px;
-  width: auto;
-  border: 2px solid black;
-  display: flex;
+  background-color: #222222;
+  height: 61px;
+  width: 100%;
   justify-content: space-between;
 }
-.header-title {
-  color: chocolate;
-  padding-left: 50px;
-  padding-bottom: 20px;
+// .logout-btn {
+//   margin: 0.85em;
+// }
+.ns-logo {
+  width: 144px;
+  height: 37px;
 }
-.logout-btn {
-  margin: 0.85em;
+.user-icon {
+  width: 34px;
+  height: 34px;
+}
+
+@media screen and (max-width: 768px) {
+  .header-mainDiv {
+    height: 50px;
+  }
+  .ns-logo {
+    width: 130px;
+    height: 35px;
+  }
+  .user-icon {
+    width: 27px;
+    height: 30px;
+  }
 }

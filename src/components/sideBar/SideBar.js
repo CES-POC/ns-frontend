@@ -13,23 +13,23 @@ const SideBar = () => {
   return (
     <div className="sideBar-mainDiv">
       <div>
-        <h5 className="sideNav">
-          Create System
+        <h4 className="sideNav">
+          <span className="ms-3">System</span>
           <span className="px-2">
             <BsPlusCircleDotted
               data-bs-toggle="modal"
               data-bs-target="#staticBackdrop"
             />
           </span>
-        </h5>
-        <h5 className="sideNav">
-          Create Data Form
+        </h4>
+        <h4 className="sideNav ms-3">
+          Data Form
           <span className="px-2">
             <Link className="text-light" to={"/formbuilder"}>
               <BsPlusCircleDotted />
             </Link>
           </span>
-        </h5>
+        </h4>
       </div>
       {modalOpen && <Modal setOpenModal={setModalOpen} />}
     </div>

@@ -1,5 +1,12 @@
+.layout{
+  min-height: 100vh;
+}
+.layout-header{
+  min-height: 20%;
+}
 .layout-mainDiv {
   display: flex;
+  min-height: 80%;
 }
 
 .children-Div {
